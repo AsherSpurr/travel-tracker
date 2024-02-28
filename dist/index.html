@@ -4,10 +4,80 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>JourneyLogix</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
+  <div class="overlay hidden"></div>
+  <header>
+    <nav>
+      <h1>JourneyLogix</h1>
+      <!-- <a href="#new-booking">Plan a trip</a> -->
+      <button class="button-nav" id="button-plan">Plan a Trip</button>
+      <button class="button-nav" id="button-login">Sign in</button>
+    </nav>
+  </header>
+  <main>
+    <div class="section-main-cont">
+      <section class="modal login" id="modal-login">
+        <div class="flex">
+          <button class="button-modal">X</button>
+        </div>
+        <div class="modal-content">
+          <h3>Login</h3>
+          <form>
+            
+          </form>
+        </div>
+      </section>
+      <section class="section-main-top">
+        <article class="article-main" id="article-main-top">
+          <h2>Total spent this year</h2>
+          <p>1,000</p>
+        </article>
+        <article class="article-main" id="article-main-bottom">
+          <h3>My trips</h3>
+          <section class="modal hidden" id="modal-past">
+            <div class="flex">
+              <button class="button-modal">X</button>
+            </div>
+            <div class="modal-content">
+              <h3>Past Trips</h3>
+            </div>
+          </section>
+          <div class="row-even">
+            <figure id="fig-past-trips">
+              <img src="./images/loc2.jpg" height="100px" width="100px"/>
+              <p>Past</p>
+            </figure>
+          </div>
+          <section class="modal hidden" id="modal-past">
+            <div class="flex">
+              <h3>Current Trips</h3>
+              <button class="button-modal">X</button>
+            </div>
+          </section>
+          <div class="row-even">
+            <figure id="fig-current-trips">
+              <img src="./images/loc3.jpg" height="100px" width="100px"/>
+              <p>Current</p>
+            </figure>
+          </div>
+          <section class="modal hidden" id="modal-past">
+            <div class="flex">
+              <h3>Future Trips</h3>
+              <button class="button-modal">X</button>
+            </div>
+          </section>
+          <div class="row-even">
+            <figure id="fig-future-trips">
+              <img src="./images/loc1.jpg" height="100px" width="100px"/>
+              <p>Upcoming</p>
+            </figure>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
   
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
