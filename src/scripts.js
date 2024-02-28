@@ -10,6 +10,7 @@ import './images/loc1.jpg'
 import './images/loc2.jpg'
 import './images/loc3.jpg'
 
+/*<><><><><><><><><><><><><><><> DOM UPDATES <><><><><><><>><><><><><><><><> */
 const modalPast = document.querySelector('#modal-past')
 const modalCurrent = document.querySelector('#modal-current')
 // const modalPast = document.querySelector('#modal-past')
@@ -30,14 +31,28 @@ function removeModal(imgValue) {
   console.log('trip image value', imgValue)
 }
 
+/* <><><><><><><><><><><><><><><> Javascript <><><><><><><><><><><><><><> */
 function sortTrips(userData, tripsData) {
   let trips = tripsData.trips
   let sortedTrips = trips.filter((trip) => {
     return userData.id === trip.userID
   })
+  sortCurrentTrips(sortedTrips)
+  sortPastTrips(sortedTrips)
   return sortedTrips
 }
 
+function sortPastTrips(trips) {
+  return trips.filter((trip) => {
+    return trip.status === 'approved'
+  })
+}
+
+function sortCurrentTrips(trips) {
+  return trips.filter((trip) => {
+    return trip.status === 'pending'
+  })
+}
 
 getData()
 
