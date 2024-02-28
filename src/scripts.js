@@ -1,6 +1,6 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
-
+import { getData } from './apiCalls';
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
 
@@ -10,4 +10,17 @@ import './images/loc1.jpg'
 import './images/loc2.jpg'
 import './images/loc3.jpg'
 
-console.log('This is the JavaScript entry file - your code begins here.');
+
+function sortTrips(userData, tripsData) {
+  let trips = tripsData.trips
+  let sortedTrips = trips.filter((trip) => {
+    return userData.id === trip.userID
+  })
+  return sortedTrips
+}
+
+getData()
+
+export {
+  sortTrips
+}
