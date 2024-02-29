@@ -1,6 +1,7 @@
 
 const modalPast = document.querySelector('#modal-past')
 const modalCurrent = document.querySelector('#modal-current')
+const totalSpent = document.querySelector('.total-spent')
 // const modalPast = document.querySelector('#modal-past')
 
 document.querySelectorAll('.image').forEach(img => {
@@ -19,3 +20,10 @@ function removeModal(imgValue) {
   console.log('trip image value', imgValue)
 }
 
+function renderTotalSpent(total) {
+  totalSpent.innerText = total
+}
+
+export {
+  renderTotalSpent
+}
