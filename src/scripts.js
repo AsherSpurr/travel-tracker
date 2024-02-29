@@ -2,7 +2,7 @@
 // Do not delete or rename this file ********
 import { getData } from './apiCalls';
 
-import { renderTotalSpent } from './domUpdates';
+import { renderTotalSpent, renderPastTrips } from './domUpdates';
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
 // import './css/index.scss'
@@ -65,6 +65,7 @@ function sortPastDests(pastTrips, dests) {
     return tripIDs.includes(dest.id)
   })
   yearlyCost(pastTrips, pastDests)
+  renderPastTrips(pastTrips, pastDests)
   return pastDests
 }
 
