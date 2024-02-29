@@ -1,9 +1,9 @@
 
 import { handleAllData } from "./scripts"
 
-function getData() {
+function getData(userID) {
 
-  const user = fetch('http://localhost:3001/api/v1/travelers/30')
+  const user = fetch(`http://localhost:3001/api/v1/travelers/${userID}`)
     .then(resp => resp.json())
 
   const trips = fetch('http://localhost:3001/api/v1/trips')
