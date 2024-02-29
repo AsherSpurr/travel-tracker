@@ -3,6 +3,7 @@
 import { getData } from './apiCalls';
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
+// import './css/index.scss'
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
@@ -32,30 +33,40 @@ function removeModal(imgValue) {
 }
 
 /* <><><><><><><><><><><><><><><> Javascript <><><><><><><><><><><><><><> */
-function sortTrips(userData, tripsData) {
+function userTrips(userData, tripsData) {
   let trips = tripsData.trips
   let sortedTrips = trips.filter((trip) => {
     return userData.id === trip.userID
   })
-  sortCurrentTrips(sortedTrips)
-  sortPastTrips(sortedTrips)
+  sortTrips(sortedTrips)
   return sortedTrips
 }
 
-function sortPastTrips(trips) {
-  return trips.filter((trip) => {
+// function sortPastTrips(trips) {
+//   return trips.filter((trip) => {
+//     return trip.status === 'approved'
+//   })
+// }
+
+// function sortCurrentTrips(trips) {
+//   return trips.filter((trip) => {
+//     return trip.status === 'pending'
+//   })
+// }
+
+function sortTrips(trips) {
+  let pastTrips = trips.filter((trip) => {
     return trip.status === 'approved'
   })
-}
-
-function sortCurrentTrips(trips) {
-  return trips.filter((trip) => {
+  let currentTrips = trips.filter((trip) => {
     return trip.status === 'pending'
   })
+  console.log(pastTrips)
+  console.log(currentTrips)
 }
 
 getData()
 
 export {
-  sortTrips
+  userTrips
 }
