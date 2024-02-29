@@ -18,12 +18,22 @@ function handleAllData(userData, tripsData, destData) {
   sortCurrentDests(currentTrips, destData)
 }
 
+getUserLogin('traveler30', 'travel') //make dynamic after login
+function getUserLogin(userName, password) {
+  let userID = userName.replace('traveler', '')
+  if (userName !== 'traveler' + userID || password !== 'travel') {
+    console.log('no') //insert error handling
+  } else {
+    getData(userID)
+    console.log('yes')
+  }
+}
+
 function userTrips(userData, tripsData) {
   let trips = tripsData.trips
   let sortedTrips = trips.filter((trip) => {
     return userData.id === trip.userID
   })
-  //   sortTrips(sortedTrips)
   sortPastTrips(sortedTrips)
   sortCurrentTrips(sortedTrips)
   return sortedTrips
@@ -52,6 +62,7 @@ function sortPastDests(pastTrips, dests) {
   let pastDests = allDests.filter((dest) => {
     return tripIDs.includes(dest.id)
   })
+  yearlyCost(pastTrips, pastDests)
   return pastDests
 }
 
@@ -66,12 +77,33 @@ function sortCurrentDests(currentTrips, dests) {
   return currentDests
 }
 
-getData()
+function yearlyCost(trips, dests) {
+  let targetTrips = trips.filter((trip) => {
+    return trip.date.includes('2022')
+  })
+  let totalCost = 0
+  targetTrips.forEach((trip) => {
+    let targetDest = dests.find((dest) => {
+      return dest.id === trip.destinationID
+    })
+    if (targetDest) {
+      let flightCost = targetDest.estimatedFlightCostPerPerson * trip.travelers
+      let lodgingCost = targetDest.estimatedLodgingCostPerDay * trip.duration
+      let agencyFee = (flightCost + lodgingCost) * .10
+      totalCost += flightCost + lodgingCost + agencyFee
+    }
+  })
+  console.log(totalCost)
+  return totalCost
+}
+
+// getData()
 
 export {
   userTrips,
   sortPastTrips,
   sortCurrentTrips,
   sortPastDests,
+  sortCurrentDests,
   handleAllData
 }
