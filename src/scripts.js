@@ -52,6 +52,7 @@ function sortPastDests(pastTrips, dests) {
   let pastDests = allDests.filter((dest) => {
     return tripIDs.includes(dest.id)
   })
+  yearlyCost(pastTrips, pastDests)
   return pastDests
 }
 
@@ -64,6 +65,25 @@ function sortCurrentDests(currentTrips, dests) {
     return tripIDs.includes(dest.id)
   })
   return currentDests
+}
+
+function yearlyCost(trips, dests) {
+  let targetTrips = trips.filter((trip) => {
+    return trip.date.includes('2022')
+  })
+
+  let totalCost = 0;
+  targetTrips.forEach((trip) => {
+    let destination = dests.find((dest) => dest.id === trip.destinationID)
+    if (destination) {
+      // eslint-disable-next-line max-len
+      let flightCost = destination.estimatedFlightCostPerPerson * trip.travelers
+      let lodgingCost = destination.estimatedLodgingCostPerDay * trip.duration
+      totalCost += flightCost + lodgingCost;
+    }
+  })
+  console.log(totalCost)
+  return totalCost
 }
 
 getData()
