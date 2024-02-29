@@ -1,5 +1,5 @@
 
-import { sortTrips } from "./scripts"
+import { handleAllData } from "./scripts"
 
 function getData() {
 
@@ -15,10 +15,12 @@ function getData() {
   Promise.all([user, trips, destinations])
     .then((data) => {
       let [user, trips, destinations] = data
-      console.log('sorted trips', sortTrips(user, trips))
+      // console.log('sorted trips', userTrips(user, trips))
+      // sortPastDests(arr, destinations)
       console.log('user', user)
       console.log('trip', trips)
       console.log('destinations', destinations)
+      handleAllData(user, trips, destinations)
     })
 }
 
