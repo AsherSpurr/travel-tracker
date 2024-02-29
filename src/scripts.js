@@ -15,6 +15,7 @@ import './images/loc3.jpg'
 function handleAllData(userData, tripsData, destData) {
   userTrips(userData, tripsData)
   sortPastDests(pastTrips, destData)
+  sortCurrentDests(currentTrips, destData)
 }
 
 function userTrips(userData, tripsData) {
@@ -22,7 +23,7 @@ function userTrips(userData, tripsData) {
   let sortedTrips = trips.filter((trip) => {
     return userData.id === trip.userID
   })
-//   sortTrips(sortedTrips)
+  //   sortTrips(sortedTrips)
   sortPastTrips(sortedTrips)
   sortCurrentTrips(sortedTrips)
   return sortedTrips
@@ -52,6 +53,17 @@ function sortPastDests(pastTrips, dests) {
     return tripIDs.includes(dest.id)
   })
   return pastDests
+}
+
+function sortCurrentDests(currentTrips, dests) {
+  let allDests = dests.destinations
+  let tripIDs = currentTrips.map((trip) => {
+    return trip.destinationID
+  })
+  let currentDests = allDests.filter((dest) => {
+    return tripIDs.includes(dest.id)
+  })
+  return currentDests
 }
 
 getData()
