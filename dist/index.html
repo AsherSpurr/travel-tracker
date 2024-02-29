@@ -16,7 +16,7 @@
       <button class="button-nav" id="button-cost">Cost</button>
     </div>
     <div>
-      <button class="button-nav" id="button-login">Sign in</button>
+      <button class="button-nav" id="button-login">Sign out</button>
     </div>
   </header>
   <main>
@@ -39,7 +39,7 @@
       <section class="section-main-top">
         <article class="article-main" id="article-main-top">
           <h2>Total spent this year</h2><br>
-          <p class="total-spent">1,000</p>
+          <p class="total-spent">---</p>
         </article>
       </section>
       <section class="section-main-bottom">
@@ -48,15 +48,16 @@
           <div class="article-flex">
             <section class="modal hidden" id="modal-past">
               <div class="flex">
-                <button class="button-modal">X</button>
+                <button class="button-modal" id="modal-button-past">X</button>
               </div>
-              <div class="modal-content">
+              <div class="modal-content" id="modal-content-past">
                 <h4>Past Trips</h4>
+                <!-- <p class="filler">No Past Trips</p> -->
               </div>
             </section>
             <div class="row-even">
               <figure id="fig-past-trips">
-                <img class="image" id="img-past" src="./images/loc2.jpg" height="200px" width="200px" />
+                <img class="image" id="img-past" src="./images/loc2.jpg" alt="man walking a snowy path with mountains ahead" height="200px" width="200px" />
                 <div class="overlay-fig">
                   <p class="overlay-text">Past trips</p>
                 </div>
@@ -64,13 +65,16 @@
             </div>
             <section class="modal hidden" id="modal-current">
               <div class="flex">
+                <button class="button-modal" id="modal-button-current">X</button>
+              </div>
+              <div class="modal-content" id="modal-content-current">
                 <h4>Current Trips</h4>
-                <button class="button-modal">X</button>
+                <!-- <p class="filler">No Current Trips</p> -->
               </div>
             </section>
             <div class="row-even">
               <figure id="fig-current-trips">
-                <img class="image" id="img-current" src="./images/loc3.jpg" height="100px" width="100px" />
+                <img class="image" id="img-current" src="./images/loc3.jpg" alt="woman standing in tree pose on top a mountain" height="100px" width="100px" />
                 <div class="overlay-fig">
                   <p class="overlay-text">Current trips</p>
                 </div>
@@ -78,13 +82,16 @@
             </div>
             <section class="modal hidden" id="modal-future">
               <div class="flex">
-                <h4>Future Trips</h4>
-                <button class="button-modal">X</button>
+                <button class="button-modal" id="modal-button-future">X</button>
+              </div>
+              <div class="modal-content" id="modal-content-future">
+                <h4>Current Trips</h4>
+                <p>No Current Trips</p>
               </div>
             </section>
             <div class="row-even">
               <figure id="fig-future-trips">
-                <img class="image" id="img-future" src="./images/loc1.jpg" height="100px" width="100px" />
+                <img class="image" id="img-future" src="./images/loc1.jpg" alt="small plane landing in water in front of a small tropical island" height="100px" width="100px" />
                 <div class="overlay-fig">
                   <p class="overlay-text">Upcoming trips</p>
                 </div>

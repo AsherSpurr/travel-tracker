@@ -1,6 +1,9 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 import { getData } from './apiCalls';
+
+// eslint-disable-next-line max-len
+import { renderTotalSpent, renderPastTrips, renderCurrentTrips } from './domUpdates';
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
 // import './css/index.scss'
@@ -63,6 +66,7 @@ function sortPastDests(pastTrips, dests) {
     return tripIDs.includes(dest.id)
   })
   yearlyCost(pastTrips, pastDests)
+  renderPastTrips(pastTrips, pastDests)
   return pastDests
 }
 
@@ -74,6 +78,7 @@ function sortCurrentDests(currentTrips, dests) {
   let currentDests = allDests.filter((dest) => {
     return tripIDs.includes(dest.id)
   })
+  renderCurrentTrips(currentTrips, currentDests)
   return currentDests
 }
 
@@ -94,6 +99,7 @@ function yearlyCost(trips, dests) {
     }
   })
   console.log(totalCost)
+  renderTotalSpent(totalCost)
   return totalCost
 }
 
