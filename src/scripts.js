@@ -2,7 +2,8 @@
 // Do not delete or rename this file ********
 import { getData } from './apiCalls';
 
-import { renderTotalSpent, renderPastTrips } from './domUpdates';
+// eslint-disable-next-line max-len
+import { renderTotalSpent, renderPastTrips, renderCurrentTrips } from './domUpdates';
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
 // import './css/index.scss'
@@ -77,6 +78,7 @@ function sortCurrentDests(currentTrips, dests) {
   let currentDests = allDests.filter((dest) => {
     return tripIDs.includes(dest.id)
   })
+  renderCurrentTrips(currentTrips, currentDests)
   return currentDests
 }
 

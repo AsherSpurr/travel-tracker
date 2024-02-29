@@ -25,7 +25,6 @@ function renderModal(imgValue) {
   if (imgValue === 'img-current') {
     modalCurrent.classList.remove('hidden')
   }
-  // console.log('trip image value', imgValue)
 }
 
 function hideModal(buttonValue) {
@@ -56,7 +55,22 @@ function renderPastTrips(trips, dests) {
   })
 }
 
+function renderCurrentTrips(trips, dests) {
+  const modalContentCurrent = document.querySelector('#modal-content-current')
+  trips.forEach((trip) => {
+    dests.find((dest) => {
+      modalContentCurrent.innerHTML += `
+  <figure>
+    <p>${trip.date}</P>
+    <img src="${dest.image}" alt="${dest.alt}" height="100px" width="100px"/>
+    <figcaption>${dest.destination}</figcaption>
+  </figure>`
+    })
+  })
+}
+
 export {
   renderTotalSpent,
-  renderPastTrips
+  renderPastTrips,
+  renderCurrentTrips
 }
