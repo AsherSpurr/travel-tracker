@@ -12,30 +12,54 @@ import './images/loc2.jpg'
 import './images/loc3.jpg'
 
 /* <><><><><><><><><><><><><><><> Javascript <><><><><><><><><><><><><><> */
+function handleAllData(userData, tripsData, destData) {
+  userTrips(userData, tripsData)
+  sortPastDests(pastTrips, destData)
+}
+
 function userTrips(userData, tripsData) {
   let trips = tripsData.trips
   let sortedTrips = trips.filter((trip) => {
     return userData.id === trip.userID
   })
-  console.log('sorted trips', sortedTrips)
-  sortTrips(sortedTrips)
+//   sortTrips(sortedTrips)
+  sortPastTrips(sortedTrips)
+  sortCurrentTrips(sortedTrips)
   return sortedTrips
 }
 
-function sortTrips(trips) {
-  let pastTrips = trips.filter((trip) => {
+let pastTrips;
+let currentTrips;
+
+function sortPastTrips(trips) {
+  return pastTrips = trips.filter((trip) => {
     return trip.status === 'approved'
   })
-  let currentTrips = trips.filter((trip) => {
+}
+
+function sortCurrentTrips(trips) {
+  return currentTrips = trips.filter((trip) => {
     return trip.status === 'pending'
   })
-  console.log(pastTrips)
-  console.log(currentTrips)
+}
+
+function sortPastDests(pastTrips, dests) {
+  let allDests = dests.destinations
+  let tripIDs = pastTrips.map((trip) => {
+    return trip.destinationID
+  })
+  let pastDests = allDests.filter((dest) => {
+    return tripIDs.includes(dest.id)
+  })
+  return pastDests
 }
 
 getData()
 
 export {
   userTrips,
-  sortTrips,
+  sortPastTrips,
+  sortCurrentTrips,
+  sortPastDests,
+  handleAllData
 }
