@@ -71,15 +71,15 @@ function yearlyCost(trips, dests) {
   let targetTrips = trips.filter((trip) => {
     return trip.date.includes('2022')
   })
-
-  let totalCost = 0;
+  let totalCost = 0
   targetTrips.forEach((trip) => {
-    let destination = dests.find((dest) => dest.id === trip.destinationID)
-    if (destination) {
-      // eslint-disable-next-line max-len
-      let flightCost = destination.estimatedFlightCostPerPerson * trip.travelers
-      let lodgingCost = destination.estimatedLodgingCostPerDay * trip.duration
-      totalCost += flightCost + lodgingCost;
+    let targetDest = dests.find((dest) => {
+      return dest.id === trip.destinationID
+    })
+    if (targetDest) {
+      let flightCost = targetDest.estimatedFlightCostPerPerson * trip.travelers
+      let lodgingCost = targetDest.estimatedLodgingCostPerDay * trip.duration
+      totalCost += flightCost + lodgingCost
     }
   })
   console.log(totalCost)
@@ -93,5 +93,6 @@ export {
   sortPastTrips,
   sortCurrentTrips,
   sortPastDests,
+  sortCurrentDests,
   handleAllData
 }
