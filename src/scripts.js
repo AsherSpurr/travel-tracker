@@ -104,22 +104,22 @@ function yearlyCost(trips, dests) {
 }
 
 
-// function createTrip(formInput) {
-//   let trip = {
-//     id: 0,
-//     userID: 0,
-//     destinationID: 0,
-//     travelers: 0,
-//     date: 'yyyy/mm/dd',
-//     duration: 0,
-//     status: pending,
-//     suggestedActivities: [dest.destinationID.suggestedActivities],
-//   }
-// }
-
-function estimateCost(formInput) {
-
+function createTrip(formInput) {
+  let trip = {
+    id: 0,//append to end of trip id's
+    userID: 0,
+    destinationID: 0,
+    travelers: 0,
+    date: 'yyyy/mm/dd',
+    duration: 0,
+    status: pending,
+    suggestedActivities: [dest.destinationID.suggestedActivities],
+  }
 }
+
+// function estimateCost(formInput) {
+
+// }
 
 
 // {id: <number>, 
@@ -150,5 +150,6 @@ export {
   sortCurrentTrips,
   sortPastDests,
   sortCurrentDests,
-  handleAllData
+  handleAllData,
+  createTrip
 }

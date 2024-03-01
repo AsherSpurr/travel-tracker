@@ -108,15 +108,16 @@
     </section>
     <section class="plan-trip-cont">
       <form>
-        <label>Select the trips start date</label>
-        <input type="date" required/><br>
-        <label>Trip length</label>
-        <input type="number"/><br>
-        <label>Number of travelers</label>
-        <input type="number"/><br>
-        <label>Choose you're destination</label>
-        <select class="trip-select"><br>
-        </select>
+        <label for="date">Select the trips start date</label>
+        <input type="date" name="date" id="date" required/><br>
+        <label for="duration">Trip length</label>
+        <input type="number" name="duration" id="duration" required/><br>
+        <label for="travelers">Number of travelers</label>
+        <input type="number" name="travelers" id="travelers" required/><br>
+        <label for="destination">Choose you're destination</label>
+        <select class="trip-select" name="destination" id="destination" required>
+        </select><br>
+        <button class="button-form">Finalize Trip</button>
       </form>
       <dl>
         <dt>Estimated Cost</dt>

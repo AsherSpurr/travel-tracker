@@ -1,9 +1,31 @@
+/* eslint-disable max-len */
+import { createTrip } from "./scripts"
 
 const modalPast = document.querySelector('#modal-past')
 const modalCurrent = document.querySelector('#modal-current')
 const totalSpent = document.querySelector('.total-spent')
+const buttonSubmit = document.querySelector('.button-form')
+const inputs = document.querySelectorAll('input')
+// const options = document.querySelector('.dest')
 
+buttonSubmit.addEventListener('click', (e) => {
+  e.preventDefault()
+  inputs.forEach((input) => {
+    console.log('value', input.value)
+    console.log('id', input.id)
+  })
+  // options.forEach((option) => {
+  //   console.log('option value', option.value)
+  // })
+  createTrip(inputs.value)
+})
 
+// function getOptionData() {
+//   let option = document.querySelectorAll('option').value
+//   options.addEventListener('change', () => {
+//     console.log('option value', option)
+//   })
+// }
 document.querySelectorAll('.button-modal').forEach((button) => {
   button.addEventListener('click', () => {
     hideModal(button.id)
@@ -74,7 +96,7 @@ function renderTripSelect(dests) {
   let allDests = dests.destinations
   allDests.forEach((dest) => {
     tripSelect.innerHTML += `
-    <option class="${dest.id}">${dest.destination}</option>
+    <option class="dest" id="${dest.id}" value="destination">${dest.destination}</option>
     `
   })
 }
