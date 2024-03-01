@@ -1,7 +1,4 @@
 
-// import tripsSample from './sampleTrips';
-// import userSample from './sample-user'
-
 function userTrips(userSample, tripsSample) {
   let trips = tripsSample.trips
   let sortedTrips = trips.filter((trip) => {
@@ -9,15 +6,6 @@ function userTrips(userSample, tripsSample) {
   })
   return sortedTrips
 }
-  
-// function sortTrips(trips) {
-//   let pastTrips = trips.filter((trip) => {
-//     return trip.status === 'approved'
-//   })
-//   let currentTrips = trips.filter((trip) => {
-//     return trip.status === 'pending'
-//   })
-// }
 
 function sortPastTrips(trips) {
   let pastTrips = trips.filter((trip) => {
@@ -52,33 +40,33 @@ function yearlyCost(trips, dests) {
   return totalCost
 }
 
+function sortPastDests(pastTrips, dests) {
+  let allDests = dests.destinations
+  let tripIDs = pastTrips.map((trip) => {
+    return trip.destinationID
+  })
+  let pastDests = allDests.filter((dest) => {
+    return tripIDs.includes(dest.id)
+  })
+  return pastDests
+}
 
-//<><><><><>CANNOT TEST<><>><>><<>
-// function sortPastDests(pastTrips, dests) {
-//   let allDests = dests.destinations
-//   let tripIDs = pastTrips.map((trip) => {
-//     return trip.destinationID
-//   })
-//   let pastDests = allDests.filter((dest) => {
-//     return tripIDs.includes(dest.id)
-//   })
-//   yearlyCost(pastTrips, pastDests)
-//   return pastDests
-// }
+function sortCurrentDests(currentTrips, dests) {
+  let allDests = dests.destinations
+  let tripIDs = currentTrips.map((trip) => {
+    return trip.destinationID
+  })
+  let currentDests = allDests.filter((dest) => {
+    return tripIDs.includes(dest.id)
+  })
+  return currentDests
+}
 
-// function sortCurrentDests(currentTrips, dests) {
-//   let allDests = dests.destinations
-//   let tripIDs = currentTrips.map((trip) => {
-//     return trip.destinationID
-//   })
-//   let currentDests = allDests.filter((dest) => {
-//     return tripIDs.includes(dest.id)
-//   })
-//   return currentDests
-// }
 export {
   userTrips,
   sortPastTrips,
   sortCurrentTrips,
   yearlyCost,
+  sortCurrentDests,
+  sortPastDests
 }
