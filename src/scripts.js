@@ -1,9 +1,11 @@
+/* eslint-disable max-len */
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 import { getData, postTrip, deleteTrip } from './apiCalls';
 
+
 // eslint-disable-next-line max-len
-import { renderTotalSpent, renderPastTrips, renderCurrentTrips, renderTripSelect } from './domUpdates';
+import { renderTotalSpent, renderPastTrips, renderCurrentTrips, renderTripSelect, renderEstimatedCost } from './domUpdates';
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
 // import './css/index.scss'
@@ -25,6 +27,7 @@ function handleAllData(userData, tripsData, destData) {
   sortCurrentDests(currentTrips, destData)
   renderTripSelect(destData)
   allTrips = tripsData;
+  estimateCost(tripsData, destData)
 }
 
 getUserLogin('traveler30', 'travel') //make dynamic after login
@@ -128,9 +131,27 @@ function createTrip(dateValue, durationValue, travelersValue, destIDValue) {
   postTrip(trip)
 }
 
-// function estimateCost(formInput) {
+function estimateCost(tripsData, destsData) {
+  let trips = tripsData.trips
+  let dests = destsData.destinations
+  let targetTripID = trips.length - 1
+  let targetTrip = trips[targetTripID]
 
-// }
+  let totalCost = 0
+
+  let targetDest = dests.find((dest) => {
+    return targetTrip.destinationID === dest.id
+  })
+  if (targetDest) {
+    let flightCost = targetDest.estimatedFlightCostPerPerson * targetTrip.travelers
+    let lodgingCost = targetDest.estimatedLodgingCostPerDay * targetTrip.duration
+    let agencyFee = (flightCost + lodgingCost) * .10
+    totalCost += flightCost + lodgingCost + agencyFee
+  }
+  renderEstimatedCost(totalCost)
+  return totalCost
+}
+
 // deleteTrip(204)
 
 // getData()
@@ -142,5 +163,5 @@ export {
   sortPastDests,
   sortCurrentDests,
   handleAllData,
-  createTrip
+  createTrip,
 }

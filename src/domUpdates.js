@@ -13,6 +13,7 @@ const mainTop = document.querySelector('.section-main-top')
 const mainBottom = document.querySelector('.section-main-bottom')
 const buttonHome = document.querySelector('#button-home')
 const overlay = document.querySelector('.overlay')
+const estimatedCost = document.querySelector('#estimated-cost')
 
 buttonHome.addEventListener('click', () => {
   unhideMainPage()
@@ -51,6 +52,7 @@ buttonSubmit.addEventListener('click', (e) => {
       console.log('no')
     }
   })
+  estimatedCost.classList.toggle('hidden')
   createTrip(date, duration, travelers, destinationID)
 })
 
@@ -137,6 +139,10 @@ function renderTripSelect(dests) {
   })
 }
 
+function renderEstimatedCost(num) {
+  estimatedCost.innerText = num
+}
+
 function hideForm() {
   formContainer.classList.add('hidden')
 }
@@ -159,5 +165,6 @@ export {
   renderTotalSpent,
   renderPastTrips,
   renderCurrentTrips,
-  renderTripSelect
+  renderTripSelect,
+  renderEstimatedCost
 }
