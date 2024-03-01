@@ -3,7 +3,8 @@ import chai from 'chai';
 const expect = chai.expect;
 
 import tripsSample from './sample-trips';
-import { userTrips, sortPastTrips, sortCurrentTrips, sortCurrentDests, sortPastDests } from './script-test';
+import { userTrips, sortPastTrips, sortCurrentTrips, sortCurrentDests, sortPastDests,
+  yearlyCost, } from './script-test';
 import userSample from './sample-user';
 import destsSample from './sample-dests'
 
@@ -50,6 +51,7 @@ describe('sortPastTrips', () => {
   it('should return trips with a status of approved', () => {
     let sorted = userTrips(userSample, tripsSample)
     let e = sortPastTrips(sorted)
+    
     expect(e).to.deep.equal([
       {
         "id": 36,
@@ -89,6 +91,7 @@ describe('sortCurrentTrips', () => {
   it('should return trips with a status of pending', () => {
     let sorted = userTrips(userSample, tripsSample)
     let e = sortCurrentTrips(sorted)
+
     expect(e).to.deep.equal([])
   })
 })
@@ -98,6 +101,7 @@ describe('sortPastDests', () => {
     let sorted = userTrips(userSample, tripsSample)
     let past = sortPastTrips(sorted)
     let e = sortPastDests(past, destsSample)
+
     expect(e).to.deep.equal([
       {
         "id": 4,
@@ -132,13 +136,19 @@ describe('sortCurrentDests', () => {
     let sorted = userTrips(userSample, tripsSample)
     let current = sortCurrentTrips(sorted)
     let e = sortCurrentDests(current, destsSample)
+
     expect(e).to.deep.equal([])
   })
 })
 
-describe('', () => {
-  it.skip('', () => {
+describe('yearlyCost', () => {
+  it('should return a total spent on past trips for the year 2020 including 10% agency fee', () => {
+    let sorted = userTrips(userSample, tripsSample)
+    let pastTrips = sortPastTrips(sorted)
+    let pastDests = sortPastDests(pastTrips, destsSample)
+    let e = yearlyCost(pastTrips, pastDests)
 
+    expect(e).to.equal(12562)
   })
 })
 

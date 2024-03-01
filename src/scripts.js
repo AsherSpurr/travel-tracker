@@ -65,7 +65,6 @@ function sortPastDests(pastTrips, dests) {
   let pastDests = allDests.filter((dest) => {
     return tripIDs.includes(dest.id)
   })
-  console.log('past', pastDests)
   yearlyCost(pastTrips, pastDests)
   renderPastTrips(pastTrips, pastDests)
   return pastDests
@@ -79,7 +78,6 @@ function sortCurrentDests(currentTrips, dests) {
   let currentDests = allDests.filter((dest) => {
     return tripIDs.includes(dest.id)
   })
-  console.log('current', currentDests)
   renderCurrentTrips(currentTrips, currentDests)
   return currentDests
 }
