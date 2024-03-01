@@ -14,17 +14,36 @@ import './images/loc1.jpg'
 import './images/loc2.jpg'
 import './images/loc3.jpg'
 
+let allTrips;
+let pastTrips;
+let currentTrips;
 /* <><><><><><><><><><><><><><><> Javascript <><><><><><><><><><><><><><> */
 function handleAllData(userData, tripsData, destData) {
   userTrips(userData, tripsData)
   sortPastDests(pastTrips, destData)
   sortCurrentDests(currentTrips, destData)
   renderTripSelect(destData)
+  allTrips = tripsData;
+  // user = returnUserData(userData)
 }
 
+// function returnUserData(data) {
+//   let user = {
+//     id: data.id,
+//     name: data.name,
+//     travelerType: data.travelerType,
+//   }
+//   // console.log('attempt', user)
+//   return user
+// }
+// console.log('proper user', user)
+let userId;
+
 getUserLogin('traveler30', 'travel') //make dynamic after login
+
 function getUserLogin(userName, password) {
   let userID = userName.replace('traveler', '')
+  userId = userID //<><><><><><><><><>><>><><><><><><><><><><><><><
   if (userName !== 'traveler' + userID || password !== 'travel') {
     console.log('no') //insert error handling
   } else {
@@ -42,9 +61,6 @@ function userTrips(userData, tripsData) {
   sortCurrentTrips(sortedTrips)
   return sortedTrips
 }
-
-let pastTrips;
-let currentTrips;
 
 function sortPastTrips(trips) {
   return pastTrips = trips.filter((trip) => {
@@ -104,17 +120,33 @@ function yearlyCost(trips, dests) {
 }
 
 
-function createTrip(formInput) {
+// eslint-disable-next-line max-len
+function createTrip(dateValue, durationValue, travelersValue, destIDValue) {
+  let durationNum = Number(durationValue)
+  let travelerNum = Number(travelersValue)
+  let destIDNum = Number(destIDValue)
+
+  console.log('all trips', allTrips)
+  let targetIndex = allTrips.trips.length + 1
+  console.log('targetIndex', targetIndex)
+
+  // let targetDest = allDests.find((dest) => {
+  //   return destIDNum === dest.id
+  // })
+  // console.log(targetDest.suggestedActivities)
+  // console.log(targetDest)
   let trip = {
-    id: 0,//append to end of trip id's
-    userID: 0,
-    destinationID: 0,
-    travelers: 0,
-    date: 'yyyy/mm/dd',
-    duration: 0,
-    status: pending,
-    suggestedActivities: [dest.destinationID.suggestedActivities],
+    id: targetIndex,
+    userID: userId,
+    destinationID: destIDNum,
+    travelers: travelerNum,
+    date: dateValue,
+    duration: durationNum,
+    status: 'pending',
+    suggestedActivities: [],
   }
+  console.log('trip object', trip)
+  return trip
 }
 
 // function estimateCost(formInput) {

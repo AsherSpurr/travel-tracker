@@ -6,33 +6,48 @@ const modalCurrent = document.querySelector('#modal-current')
 const totalSpent = document.querySelector('.total-spent')
 const buttonSubmit = document.querySelector('.button-form')
 const inputs = document.querySelectorAll('input')
-// const options = document.querySelector('.dest')
+const options = document.querySelector('.trip-select')
+
+options.addEventListener('change', checkIfSelected)
 
 buttonSubmit.addEventListener('click', (e) => {
   e.preventDefault()
+  let date;
+  let duration;
+  let travelers;
+  let destinationID = checkIfSelected()
   inputs.forEach((input) => {
-    console.log('value', input.value)
-    console.log('id', input.id)
+    // console.log('value', input.value)
+    // console.log('id', input.id)
+    if (input.id === 'date') {
+      date = input.value
+      // console.log('date val', date)
+    }
+    if (input.id === 'duration') {
+      duration = input.value
+      // console.log('duration val', duration)
+    }
+    if (input.id === 'travelers') {
+      travelers = input.value
+      // console.log('travelers val', travelers)
+    }
+    if (input.id === 'undefined') {
+      console.log('no')
+    }
   })
-  // options.forEach((option) => {
-  //   console.log('option value', option.value)
-  // })
-  createTrip(inputs.value)
+  createTrip(date, duration, travelers, destinationID)
 })
 
-// function getOptionData() {
-//   let option = document.querySelectorAll('option').value
-//   options.addEventListener('change', () => {
-//     console.log('option value', option)
-//   })
-// }
+function checkIfSelected() {
+  let x = document.querySelector('.trip-select').value
+  return x
+}
+
 document.querySelectorAll('.button-modal').forEach((button) => {
   button.addEventListener('click', () => {
     hideModal(button.id)
   })
 })
-
-// const modalPast = document.querySelector('#modal-past')
 
 document.querySelectorAll('.image').forEach(img => {
   img.addEventListener('click', () => {
@@ -91,12 +106,13 @@ function renderCurrentTrips(trips, dests) {
   })
 }
 
+// let allDests;
 function renderTripSelect(dests) {
   const tripSelect = document.querySelector('.trip-select')
   let allDests = dests.destinations
   allDests.forEach((dest) => {
     tripSelect.innerHTML += `
-    <option class="dest" id="${dest.id}" value="destination">${dest.destination}</option>
+    <option class="dest" id="destination" value="${dest.id}">${dest.destination}</option>
     `
   })
 }
