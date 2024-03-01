@@ -7,6 +7,12 @@ const totalSpent = document.querySelector('.total-spent')
 const buttonSubmit = document.querySelector('.button-form')
 const inputs = document.querySelectorAll('input')
 const options = document.querySelector('.trip-select')
+const buttonPlan = document.querySelector('#button-plan')
+const formContainer = document.querySelector('.plan-trip-cont')
+const mainTop = document.querySelector('.section-main-top')
+const mainBottom = document.querySelector('.section-main-bottom')
+
+buttonPlan.addEventListener('click', unhideForm)
 
 options.addEventListener('change', checkIfSelected)
 
@@ -115,6 +121,12 @@ function renderTripSelect(dests) {
     <option class="dest" id="destination" value="${dest.id}">${dest.destination}</option>
     `
   })
+}
+
+function unhideForm() {
+  formContainer.classList.toggle('hidden')
+  mainTop.classList.add('hidden')
+  mainBottom.classList.add('hidden')
 }
 
 export {

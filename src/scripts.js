@@ -1,6 +1,6 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
-import { getData } from './apiCalls';
+import { getData, postTrip, deleteTrip } from './apiCalls';
 
 // eslint-disable-next-line max-len
 import { renderTotalSpent, renderPastTrips, renderCurrentTrips, renderTripSelect } from './domUpdates';
@@ -14,6 +14,7 @@ import './images/loc1.jpg'
 import './images/loc2.jpg'
 import './images/loc3.jpg'
 
+let userId;
 let allTrips;
 let pastTrips;
 let currentTrips;
@@ -24,26 +25,13 @@ function handleAllData(userData, tripsData, destData) {
   sortCurrentDests(currentTrips, destData)
   renderTripSelect(destData)
   allTrips = tripsData;
-  // user = returnUserData(userData)
 }
-
-// function returnUserData(data) {
-//   let user = {
-//     id: data.id,
-//     name: data.name,
-//     travelerType: data.travelerType,
-//   }
-//   // console.log('attempt', user)
-//   return user
-// }
-// console.log('proper user', user)
-let userId;
 
 getUserLogin('traveler30', 'travel') //make dynamic after login
 
 function getUserLogin(userName, password) {
   let userID = userName.replace('traveler', '')
-  userId = userID //<><><><><><><><><>><>><><><><><><><><><><><><><
+  userId = userID 
   if (userName !== 'traveler' + userID || password !== 'travel') {
     console.log('no') //insert error handling
   } else {
@@ -119,61 +107,32 @@ function yearlyCost(trips, dests) {
   return totalCost
 }
 
-
-// eslint-disable-next-line max-len
 function createTrip(dateValue, durationValue, travelersValue, destIDValue) {
   let durationNum = Number(durationValue)
   let travelerNum = Number(travelersValue)
   let destIDNum = Number(destIDValue)
-
-  console.log('all trips', allTrips)
+  let userIdNum = Number(userId)
   let targetIndex = allTrips.trips.length + 1
-  console.log('targetIndex', targetIndex)
+  let formatDate = dateValue.replaceAll('-', '/')
 
-  // let targetDest = allDests.find((dest) => {
-  //   return destIDNum === dest.id
-  // })
-  // console.log(targetDest.suggestedActivities)
-  // console.log(targetDest)
   let trip = {
     id: targetIndex,
-    userID: userId,
+    userID: userIdNum,
     destinationID: destIDNum,
     travelers: travelerNum,
-    date: dateValue,
+    date: formatDate,
     duration: durationNum,
     status: 'pending',
-    suggestedActivities: [],
+    suggestedActivities: ['none'],
   }
-  console.log('trip object', trip)
-  return trip
+  postTrip(trip)
 }
 
 // function estimateCost(formInput) {
 
 // }
+// deleteTrip(204)
 
-
-// {id: <number>, 
-// userID: <number>, 
-// destinationID: <number>, 
-// travelers: <number>, 
-// date: <string 'YYYY/MM/DD'>, 
-// duration: <number>, 
-// status: <string 'approved' or 'pending'>, 
-// suggestedActivities: <array of strings>}
-
-/*
-  {id: <number>, 
-  userID: <number>, 
-  destinationID: <number>, 
-  travelers: <number>, 
-  date: <string 'YYYY/MM/DD'>, 
-  duration: <number>, 
-  status: <string 'approved' or 'pending'>, 
-  suggestedActivities: <array of strings>}
-
-*/
 // getData()
 
 export {
