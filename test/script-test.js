@@ -44,23 +44,6 @@ function sortCurrentDests(currentTrips, dests) {
   return currentDests
 }
 
-// function yearlyCost(trips, dests) {
-//   let targetTrips = trips.filter((trip) => {
-//     return trip.date.includes('2020')
-//   })
-
-//   let totalCost = 0;
-//   targetTrips.forEach((trip) => {
-//     let destination = dests.find((dest) => dest.id === trip.destinationID)
-//     if (destination) {
-//       // eslint-disable-next-line max-len
-//       let flightCost = destination.estimatedFlightCostPerPerson * trip.travelers
-//       let lodgingCost = destination.estimatedLodgingCostPerDay * trip.duration
-//       totalCost += flightCost + lodgingCost;
-//     }
-//   })
-//   return totalCost
-// }
 function yearlyCost(trips, dests) {
   let targetTrips = trips.filter((trip) => {
     return trip.date.includes('2020')
@@ -80,6 +63,14 @@ function yearlyCost(trips, dests) {
   return totalCost
 }
 
+function getUserLogin(userName, password) {
+  let userID = userName.replace('traveler', '')
+  if (userName !== 'traveler' + userID || password !== 'travel') {
+    return 'Access denied' //insert error handling
+  } else {
+    return 'Access granted'
+  }
+}
 
 export {
   userTrips,
@@ -87,5 +78,6 @@ export {
   sortCurrentTrips,
   yearlyCost,
   sortCurrentDests,
-  sortPastDests
+  sortPastDests,
+  getUserLogin
 }

@@ -4,7 +4,7 @@ const expect = chai.expect;
 
 import tripsSample from './sample-trips';
 import { userTrips, sortPastTrips, sortCurrentTrips, sortCurrentDests, sortPastDests,
-  yearlyCost, } from './script-test';
+  yearlyCost, getUserLogin } from './script-test';
 import userSample from './sample-user';
 import destsSample from './sample-dests'
 
@@ -51,7 +51,7 @@ describe('sortPastTrips', () => {
   it('should return trips with a status of approved', () => {
     let sorted = userTrips(userSample, tripsSample)
     let e = sortPastTrips(sorted)
-    
+
     expect(e).to.deep.equal([
       {
         "id": 36,
@@ -149,6 +149,39 @@ describe('yearlyCost', () => {
     let e = yearlyCost(pastTrips, pastDests)
 
     expect(e).to.equal(12562)
+  })
+})
+
+describe('getUserLogin', () => {
+  it('should allow user entry if login is correct', () => {
+    let userName = 'traveler30'
+    let password = 'travel'
+    let e = getUserLogin(userName, password)
+    expect(e).to.equal('Access granted')
+  })
+  it('should allow different users to log in', () => {
+    let userName = 'traveler25'
+    let password = 'travel'
+    let e = getUserLogin(userName, password)
+    expect(e).to.equal('Access granted')
+  })
+  it('should deny entry if username is incorrect', () => {
+    let userName = 'travelr30'
+    let password = 'travel'
+    let e = getUserLogin(userName, password)
+    expect(e).to.equal('Access denied')
+  })
+  it('should deny entry if password is incorrect', () => {
+    let userName = 'traveler30'
+    let password = 'traveler'
+    let e = getUserLogin(userName, password)
+    expect(e).to.equal('Access denied')
+  })
+})
+
+describe('', () => {
+  it.skip('', () => {
+
   })
 })
 
