@@ -11,8 +11,18 @@ const buttonPlan = document.querySelector('#button-plan')
 const formContainer = document.querySelector('.plan-trip-cont')
 const mainTop = document.querySelector('.section-main-top')
 const mainBottom = document.querySelector('.section-main-bottom')
+const buttonHome = document.querySelector('#button-home')
+const overlay = document.querySelector('.overlay')
 
-buttonPlan.addEventListener('click', unhideForm)
+buttonHome.addEventListener('click', () => {
+  unhideMainPage()
+  hideForm()
+})
+
+buttonPlan.addEventListener('click', () => {
+  hideMainPage()
+  unhideForm()
+})
 
 options.addEventListener('change', checkIfSelected)
 
@@ -64,9 +74,11 @@ document.querySelectorAll('.image').forEach(img => {
 function renderModal(imgValue) {
   if (imgValue === 'img-past') {
     modalPast.classList.remove('hidden')
+    overlay.classList.remove('hidden')
   } 
   if (imgValue === 'img-current') {
     modalCurrent.classList.remove('hidden')
+    overlay.classList.remove('hidden')
   }
 }
 
@@ -74,9 +86,11 @@ function hideModal(buttonValue) {
   console.log('button value', buttonValue)
   if (buttonValue === 'modal-button-past') {
     modalPast.classList.add('hidden')
+    overlay.classList.add('hidden')
   }
   if (buttonValue === 'modal-button-current') {
     modalCurrent.classList.add('hidden')
+    overlay.classList.add('hidden')
   }
 }
 
@@ -123,10 +137,22 @@ function renderTripSelect(dests) {
   })
 }
 
-function unhideForm() {
-  formContainer.classList.toggle('hidden')
+function hideForm() {
+  formContainer.classList.add('hidden')
+}
+
+function hideMainPage() {
   mainTop.classList.add('hidden')
   mainBottom.classList.add('hidden')
+}
+
+function unhideForm() {
+  formContainer.classList.remove('hidden')
+}
+
+function unhideMainPage() {
+  mainTop.classList.remove('hidden')
+  mainBottom.classList.remove('hidden')
 }
 
 export {
