@@ -41,12 +41,20 @@ header {
   background:rgba(0, 0, 0, 0.1);
 }
 
-#button-login {
+#button-login,
+#button-logout {
   background: #000;
   color: white;
   font-weight: 300;
-  margin-right: 4em;
   min-width: 90px;
+}
+
+#button-logout {
+  margin-right: 4em;
+}
+
+#button-login {
+  margin-left: 3em;
 }
 
 .overlay {
@@ -64,6 +72,44 @@ header {
 
 button:hover {
   cursor: pointer;
+}
+
+.login-page {
+  height: 100vh;
+  width: 100%;
+  background-color: #e2b9b9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-cont {
+  background-color: white;
+  min-height: 50vh;
+  min-width: 30vw;
+  border-radius: 15px;
+  border: 1px rgba(0, 0, 0, 0.3) solid;
+  box-shadow: inset 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-cont {
+  margin-bottom: 2em;
+}
+
+.form-login {
+  font-size: larger;
+}
+
+#userName,
+#password {
+  min-height: 25px;
+  min-width: 200px;
+  border-radius: 5px;
+  border: 1px rgba(0, 0, 0, 0.3) solid;
+  box-shadow: inset 0px 0px .5px .5px rgba(0, 0, 0, 0.2);
 }
 
 .plan-trip-cont {

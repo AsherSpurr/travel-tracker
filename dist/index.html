@@ -10,7 +10,23 @@
 
 <body>
   <div class="overlay hidden"></div>
-  <header>
+  <div class="login-page">
+    <div class="login-cont">
+      <form class="form-login">
+        <p class="error"></p>
+        <div class="input-cont">
+          <label for="userName">User</label><br>
+          <input type="text" id="userName" name="userName" required />
+        </div>
+        <div class="input-cont">
+          <label for="password">Password</label><br>
+          <input type="password" id="password" name="password" />
+        </div>
+        <button class="button-nav" id="button-login">Sign in</button>
+      </form>
+    </div>
+  </div>
+  <header class="hidden">
     <h1>JourneyLogix</h1>
     <!-- <a href="#new-booking">Plan a trip</a> -->
     <div>
@@ -19,12 +35,10 @@
       <button class="button-nav" id="button-cost">Cost</button>
     </div>
     <div>
-      <button class="button-nav" id="button-login">Sign out</button>
+      <button class="button-nav" id="button-logout">Sign out</button>
     </div>
   </header>
-  <main>
-    <div class="login-cont">
-    </div>
+  <main class="hidden">
     <!-- <section class="modal hidden" id="modal-login">
         <div class="flex">
           <button class="button-modal">X</button>
@@ -110,11 +124,11 @@
     <section class="plan-trip-cont hidden">
       <form>
         <label for="date">Select the trips start date</label>
-        <input type="date" name="date" id="date" required/><br>
+        <input type="date" name="date" id="date" required /><br>
         <label for="duration">Trip length</label>
-        <input type="number" name="duration" id="duration" required/><br>
+        <input type="number" name="duration" id="duration" required /><br>
         <label for="travelers">Number of travelers</label>
-        <input type="number" name="travelers" id="travelers" required/><br>
+        <input type="number" name="travelers" id="travelers" required /><br>
         <label for="destination">Choose you're destination</label>
         <select class="trip-select" name="destination" id="destination" required>
         </select><br>
