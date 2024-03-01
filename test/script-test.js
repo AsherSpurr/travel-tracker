@@ -21,25 +21,6 @@ function sortCurrentTrips(trips) {
   return currentTrips
 }
 
-
-function yearlyCost(trips, dests) {
-  let targetTrips = trips.filter((trip) => {
-    return trip.date.includes('2022')
-  })
-
-  let totalCost = 0;
-  targetTrips.forEach((trip) => {
-    let destination = dests.find((dest) => dest.id === trip.destinationID)
-    if (destination) {
-      // eslint-disable-next-line max-len
-      let flightCost = destination.estimatedFlightCostPerPerson * trip.travelers
-      let lodgingCost = destination.estimatedLodgingCostPerDay * trip.duration
-      totalCost += flightCost + lodgingCost;
-    }
-  })
-  return totalCost
-}
-
 function sortPastDests(pastTrips, dests) {
   let allDests = dests.destinations
   let tripIDs = pastTrips.map((trip) => {
@@ -61,6 +42,26 @@ function sortCurrentDests(currentTrips, dests) {
   })
   return currentDests
 }
+
+function yearlyCost(trips, dests) {
+  let targetTrips = trips.filter((trip) => {
+    return trip.date.includes('2022')
+  })
+
+  let totalCost = 0;
+  targetTrips.forEach((trip) => {
+    let destination = dests.find((dest) => dest.id === trip.destinationID)
+    if (destination) {
+      // eslint-disable-next-line max-len
+      let flightCost = destination.estimatedFlightCostPerPerson * trip.travelers
+      let lodgingCost = destination.estimatedLodgingCostPerDay * trip.duration
+      totalCost += flightCost + lodgingCost;
+    }
+  })
+  return totalCost
+}
+
+
 
 export {
   userTrips,

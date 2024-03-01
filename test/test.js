@@ -94,7 +94,7 @@ describe('sortCurrentTrips', () => {
 })
 
 describe('sortPastDests', () => {
-  it('should return destinations matching to past trips', () => {
+  it('should return array of destination objects matching to past trips', () => {
     let sorted = userTrips(userSample, tripsSample)
     let past = sortPastTrips(sorted)
     let e = sortPastDests(past, destsSample)
@@ -127,9 +127,12 @@ describe('sortPastDests', () => {
   })
 })
 
-describe('', () => {
-  it.skip('', () => {
-
+describe('sortCurrentDests', () => {
+  it('should return an array of destination objects matching current trips', () => {
+    let sorted = userTrips(userSample, tripsSample)
+    let current = sortCurrentTrips(sorted)
+    let e = sortPastDests(current, destsSample)
+    expect(e).to.deep.equal([])
   })
 })
 
