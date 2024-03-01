@@ -131,7 +131,7 @@ describe('sortCurrentDests', () => {
   it('should return an array of destination objects matching current trips', () => {
     let sorted = userTrips(userSample, tripsSample)
     let current = sortCurrentTrips(sorted)
-    let e = sortPastDests(current, destsSample)
+    let e = sortCurrentDests(current, destsSample)
     expect(e).to.deep.equal([])
   })
 })
