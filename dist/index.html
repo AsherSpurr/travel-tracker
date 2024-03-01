@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JourneyLogix</title>
 </head>
+
 <body>
   <div class="overlay hidden"></div>
   <header>
@@ -21,7 +23,8 @@
   </header>
   <main>
     <div class="login-cont">
-      <section class="modal hidden" id="modal-login">
+    </div>
+    <!-- <section class="modal hidden" id="modal-login">
         <div class="flex">
           <button class="button-modal">X</button>
         </div>
@@ -31,76 +34,95 @@
             <label for="username">Username</label>
             <input id="username" name="username"> <br>
             <label for="password">Password</label>
-            <input id="password" name="password"> <br>
+            <input type="password" id="password" name="password"> <br>
             <button class="button-form">sign in</button>
           </form>
         </div>
-      </section>
-      <section class="section-main-top">
-        <article class="article-main" id="article-main-top">
-          <h2>Total spent this year</h2><br>
-          <p class="total-spent">---</p>
-        </article>
-      </section>
-      <section class="section-main-bottom">
-        <article class="article-main" id="article-main-bottom">
-          <h3>My trips</h3>
-          <div class="article-flex">
-            <section class="modal hidden" id="modal-past">
-              <div class="flex">
-                <button class="button-modal" id="modal-button-past">X</button>
-              </div>
-              <div class="modal-content" id="modal-content-past">
-                <h4>Past Trips</h4>
-                <!-- <p class="filler">No Past Trips</p> -->
-              </div>
-            </section>
-            <div class="row-even">
-              <figure id="fig-past-trips">
-                <img class="image" id="img-past" src="./images/loc2.jpg" alt="man walking a snowy path with mountains ahead" height="200px" width="200px" />
-                <div class="overlay-fig">
-                  <p class="overlay-text">Past trips</p>
-                </div>
-              </figure>
+      </section> -->
+    <section class="section-main-top">
+      <article class="article-main" id="article-main-top">
+        <h2>Total spent this year</h2><br>
+        <p class="total-spent">---</p>
+      </article>
+    </section>
+    <section class="section-main-bottom">
+      <article class="article-main" id="article-main-bottom">
+        <h3>My trips</h3>
+        <div class="article-flex">
+          <section class="modal hidden" id="modal-past">
+            <div class="flex">
+              <button class="button-modal" id="modal-button-past">X</button>
             </div>
-            <section class="modal hidden" id="modal-current">
-              <div class="flex">
-                <button class="button-modal" id="modal-button-current">X</button>
-              </div>
-              <div class="modal-content" id="modal-content-current">
-                <h4>Current Trips</h4>
-                <!-- <p class="filler">No Current Trips</p> -->
-              </div>
-            </section>
-            <div class="row-even">
-              <figure id="fig-current-trips">
-                <img class="image" id="img-current" src="./images/loc3.jpg" alt="woman standing in tree pose on top a mountain" height="100px" width="100px" />
-                <div class="overlay-fig">
-                  <p class="overlay-text">Current trips</p>
-                </div>
-              </figure>
+            <div class="modal-content" id="modal-content-past">
+              <h4>Past Trips</h4>
+              <!-- <p class="filler">No Past Trips</p> -->
             </div>
-            <section class="modal hidden" id="modal-future">
-              <div class="flex">
-                <button class="button-modal" id="modal-button-future">X</button>
+          </section>
+          <div class="row-even">
+            <figure id="fig-past-trips">
+              <img class="image" id="img-past" src="./images/loc2.jpg"
+                alt="man walking a snowy path with mountains ahead" height="200px" width="200px" />
+              <div class="overlay-fig">
+                <p class="overlay-text">Past trips</p>
               </div>
-              <div class="modal-content" id="modal-content-future">
-                <h4>Current Trips</h4>
-                <p>No Current Trips</p>
-              </div>
-            </section>
-            <div class="row-even">
-              <figure id="fig-future-trips">
-                <img class="image" id="img-future" src="./images/loc1.jpg" alt="small plane landing in water in front of a small tropical island" height="100px" width="100px" />
-                <div class="overlay-fig">
-                  <p class="overlay-text">Upcoming trips</p>
-                </div>
-              </figure>
-            </div>
+            </figure>
           </div>
-        </article>
-      </section>
-    </div>
+          <section class="modal hidden" id="modal-current">
+            <div class="flex">
+              <button class="button-modal" id="modal-button-current">X</button>
+            </div>
+            <div class="modal-content" id="modal-content-current">
+              <h4>Current Trips</h4>
+              <!-- <p class="filler">No Current Trips</p> -->
+            </div>
+          </section>
+          <div class="row-even">
+            <figure id="fig-current-trips">
+              <img class="image" id="img-current" src="./images/loc3.jpg"
+                alt="woman standing in tree pose on top a mountain" height="100px" width="100px" />
+              <div class="overlay-fig">
+                <p class="overlay-text">Current trips</p>
+              </div>
+            </figure>
+          </div>
+          <section class="modal hidden" id="modal-future">
+            <div class="flex">
+              <button class="button-modal" id="modal-button-future">X</button>
+            </div>
+            <div class="modal-content" id="modal-content-future">
+              <h4>Current Trips</h4>
+              <p>No Current Trips</p>
+            </div>
+          </section>
+          <div class="row-even">
+            <figure id="fig-future-trips">
+              <img class="image" id="img-future" src="./images/loc1.jpg"
+                alt="small plane landing in water in front of a small tropical island" height="100px" width="100px" />
+              <div class="overlay-fig">
+                <p class="overlay-text">Upcoming trips</p>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </article>
+    </section>
+    <section class="plan-trip-cont">
+      <form>
+        <label>Select the trips start date</label>
+        <input type="date" required/><br>
+        <label>Trip length</label>
+        <input type="number"/><br>
+        <label>Number of travelers</label>
+        <input type="number"/><br>
+        <label>Choose you're destination</label>
+        <select class="trip-select"><br>
+        </select>
+      </form>
+      <dl>
+        <dt>Estimated Cost</dt>
+        <dd>---</dd>
+      </dl>
+    </section>
   </main>
 
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->

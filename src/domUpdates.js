@@ -3,9 +3,9 @@ const modalPast = document.querySelector('#modal-past')
 const modalCurrent = document.querySelector('#modal-current')
 const totalSpent = document.querySelector('.total-spent')
 
+
 document.querySelectorAll('.button-modal').forEach((button) => {
   button.addEventListener('click', () => {
-    console.log(button.id)
     hideModal(button.id)
   })
 })
@@ -69,8 +69,19 @@ function renderCurrentTrips(trips, dests) {
   })
 }
 
+function renderTripSelect(dests) {
+  const tripSelect = document.querySelector('.trip-select')
+  let allDests = dests.destinations
+  allDests.forEach((dest) => {
+    tripSelect.innerHTML += `
+    <option class="${dest.id}">${dest.destination}</option>
+    `
+  })
+}
+
 export {
   renderTotalSpent,
   renderPastTrips,
-  renderCurrentTrips
+  renderCurrentTrips,
+  renderTripSelect
 }

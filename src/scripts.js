@@ -3,7 +3,7 @@
 import { getData } from './apiCalls';
 
 // eslint-disable-next-line max-len
-import { renderTotalSpent, renderPastTrips, renderCurrentTrips } from './domUpdates';
+import { renderTotalSpent, renderPastTrips, renderCurrentTrips, renderTripSelect } from './domUpdates';
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
 // import './css/index.scss'
@@ -19,6 +19,7 @@ function handleAllData(userData, tripsData, destData) {
   userTrips(userData, tripsData)
   sortPastDests(pastTrips, destData)
   sortCurrentDests(currentTrips, destData)
+  renderTripSelect(destData)
 }
 
 getUserLogin('traveler30', 'travel') //make dynamic after login
@@ -98,11 +99,49 @@ function yearlyCost(trips, dests) {
       totalCost += flightCost + lodgingCost + agencyFee
     }
   })
-  console.log(totalCost)
   renderTotalSpent(totalCost)
   return totalCost
 }
 
+
+// function createTrip(formInput) {
+//   let trip = {
+//     id: 0,
+//     userID: 0,
+//     destinationID: 0,
+//     travelers: 0,
+//     date: 'yyyy/mm/dd',
+//     duration: 0,
+//     status: pending,
+//     suggestedActivities: [dest.destinationID.suggestedActivities],
+//   }
+// }
+
+function estimateCost(formInput) {
+
+}
+
+
+// {id: <number>, 
+// userID: <number>, 
+// destinationID: <number>, 
+// travelers: <number>, 
+// date: <string 'YYYY/MM/DD'>, 
+// duration: <number>, 
+// status: <string 'approved' or 'pending'>, 
+// suggestedActivities: <array of strings>}
+
+/*
+  {id: <number>, 
+  userID: <number>, 
+  destinationID: <number>, 
+  travelers: <number>, 
+  date: <string 'YYYY/MM/DD'>, 
+  duration: <number>, 
+  status: <string 'approved' or 'pending'>, 
+  suggestedActivities: <array of strings>}
+
+*/
 // getData()
 
 export {
