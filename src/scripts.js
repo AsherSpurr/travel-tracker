@@ -1,9 +1,11 @@
+/* eslint-disable max-len */
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
-import { getData } from './apiCalls';
+import { getData, postTrip, deleteTrip } from './apiCalls';
+
 
 // eslint-disable-next-line max-len
-import { renderTotalSpent, renderPastTrips, renderCurrentTrips } from './domUpdates';
+import { renderTotalSpent, renderPastTrips, renderCurrentTrips, renderTripSelect, renderEstimatedCost } from './domUpdates';
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
 // import './css/index.scss'
@@ -14,16 +16,25 @@ import './images/loc1.jpg'
 import './images/loc2.jpg'
 import './images/loc3.jpg'
 
+let userId;
+let allTrips;
+let pastTrips;
+let currentTrips;
 /* <><><><><><><><><><><><><><><> Javascript <><><><><><><><><><><><><><> */
 function handleAllData(userData, tripsData, destData) {
   userTrips(userData, tripsData)
   sortPastDests(pastTrips, destData)
   sortCurrentDests(currentTrips, destData)
+  renderTripSelect(destData)
+  allTrips = tripsData;
+  estimateCost(tripsData, destData)
 }
 
 getUserLogin('traveler30', 'travel') //make dynamic after login
+
 function getUserLogin(userName, password) {
   let userID = userName.replace('traveler', '')
+  userId = userID 
   if (userName !== 'traveler' + userID || password !== 'travel') {
     console.log('no') //insert error handling
   } else {
@@ -41,9 +52,6 @@ function userTrips(userData, tripsData) {
   sortCurrentTrips(sortedTrips)
   return sortedTrips
 }
-
-let pastTrips;
-let currentTrips;
 
 function sortPastTrips(trips) {
   return pastTrips = trips.filter((trip) => {
@@ -98,10 +106,53 @@ function yearlyCost(trips, dests) {
       totalCost += flightCost + lodgingCost + agencyFee
     }
   })
-  console.log(totalCost)
   renderTotalSpent(totalCost)
   return totalCost
 }
+
+function createTrip(dateValue, durationValue, travelersValue, destIDValue) {
+  let durationNum = Number(durationValue)
+  let travelerNum = Number(travelersValue)
+  let destIDNum = Number(destIDValue)
+  let userIdNum = Number(userId)
+  let targetIndex = allTrips.trips.length + 1
+  let formatDate = dateValue.replaceAll('-', '/')
+
+  let trip = {
+    id: targetIndex,
+    userID: userIdNum,
+    destinationID: destIDNum,
+    travelers: travelerNum,
+    date: formatDate,
+    duration: durationNum,
+    status: 'pending',
+    suggestedActivities: ['none'],
+  }
+  postTrip(trip)
+}
+
+function estimateCost(tripsData, destsData) {
+  let trips = tripsData.trips
+  let dests = destsData.destinations
+  let targetTripID = trips.length - 1
+  let targetTrip = trips[targetTripID]
+
+  let totalCost = 0
+
+  let targetDest = dests.find((dest) => {
+    return targetTrip.destinationID === dest.id
+  })
+  if (targetDest) {
+    let flightCost = targetDest.estimatedFlightCostPerPerson * targetTrip.travelers
+    let lodgingCost = targetDest.estimatedLodgingCostPerDay * targetTrip.duration
+    let agencyFee = (flightCost + lodgingCost) * .10
+    totalCost += flightCost + lodgingCost + agencyFee
+  }
+  renderEstimatedCost(totalCost)
+  return totalCost
+}
+
+// deleteTrip(204)
 
 // getData()
 
@@ -111,5 +162,6 @@ export {
   sortCurrentTrips,
   sortPastDests,
   sortCurrentDests,
-  handleAllData
+  handleAllData,
+  createTrip,
 }

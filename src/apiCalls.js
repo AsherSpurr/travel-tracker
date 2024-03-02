@@ -24,6 +24,31 @@ function getData(userID) {
     })
 }
 
+function postTrip(trip) {
+  fetch('http://localhost:3001/api/v1/trips', {
+    method: 'POST',
+    body: JSON.stringify(trip),
+    headers: {
+      'Content-Type': 'application/json' 
+    }
+  })
+    .then(resp => console.log(resp.json()))
+    .catch(err => console.log(err))
+}
+
+function deleteTrip(tripNum) {
+  fetch(`http://localhost:3001/api/v1/trips/${tripNum}`, {
+    method: 'DELETE',
+    body: JSON.stringify(tripNum),
+    headers: {
+      'Content-Type': 'application/json' 
+    }
+  })
+    .then(resp => console.log(resp.json()))
+}
+
 export {
-  getData
+  getData,
+  postTrip,
+  deleteTrip
 }
