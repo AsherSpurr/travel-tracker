@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { createTrip } from "./scripts"
+import { createTrip, estimateCost, allDests } from "./scripts"
 
 const modalPast = document.querySelector('#modal-past')
 const modalCurrent = document.querySelector('#modal-current')
@@ -14,6 +14,9 @@ const mainBottom = document.querySelector('.section-main-bottom')
 const buttonHome = document.querySelector('#button-home')
 const overlay = document.querySelector('.overlay')
 const estimatedCost = document.querySelector('#estimated-cost')
+const buttonEstimate = document.querySelector('.estimate-cost')
+
+buttonEstimate.addEventListener('click', renderEstimate)
 
 buttonHome.addEventListener('click', () => {
   unhideMainPage()
@@ -27,39 +30,29 @@ buttonPlan.addEventListener('click', () => {
 
 options.addEventListener('change', checkIfSelected)
 
-buttonSubmit.addEventListener('click', (e) => {
-  e.preventDefault()
+buttonSubmit.addEventListener('click', () => {
+  // e.preventDefault()
   let date;
   let duration;
   let travelers;
   let destinationID = checkIfSelected()
   inputs.forEach((input) => {
-    // console.log('value', input.value)
-    // console.log('id', input.id)
     if (input.id === 'date') {
       date = input.value
-      // console.log('date val', date)
     }
     if (input.id === 'duration') {
       duration = input.value
-      // console.log('duration val', duration)
     }
     if (input.id === 'travelers') {
       travelers = input.value
-      // console.log('travelers val', travelers)
     }
     if (input.id === 'undefined') {
       console.log('no')
     }
   })
-  estimatedCost.classList.toggle('hidden')
   createTrip(date, duration, travelers, destinationID)
 })
 
-function checkIfSelected() {
-  let x = document.querySelector('.trip-select').value
-  return x
-}
 
 document.querySelectorAll('.button-modal').forEach((button) => {
   button.addEventListener('click', () => {
@@ -69,15 +62,20 @@ document.querySelectorAll('.button-modal').forEach((button) => {
 
 document.querySelectorAll('.image').forEach(img => {
   img.addEventListener('click', () => {
-    renderModal(img.id) 
+    renderModal(img.id)
   })
 })
+
+function checkIfSelected() {
+  let x = document.querySelector('.trip-select').value
+  return x
+}
 
 function renderModal(imgValue) {
   if (imgValue === 'img-past') {
     modalPast.classList.remove('hidden')
     overlay.classList.remove('hidden')
-  } 
+  }
   if (imgValue === 'img-current') {
     modalCurrent.classList.remove('hidden')
     overlay.classList.remove('hidden')
@@ -105,11 +103,11 @@ function renderPastTrips(trips, dests) {
   trips.forEach((trip) => {
     dests.find((dest) => {
       modalContent.innerHTML += `
-  <figure>
-    <p>${trip.date}</P>
-    <img src="${dest.image}" alt="${dest.alt}" height="100px" width="100px"/>
-    <figcaption>${dest.destination}</figcaption>
-  </figure>`
+ <figure>
+   <p>${trip.date}</P>
+   <img src="${dest.image}" alt="${dest.alt}" height="100px" width="100px"/>
+   <figcaption>${dest.destination}</figcaption>
+ </figure>`
     })
   })
 }
@@ -119,27 +117,45 @@ function renderCurrentTrips(trips, dests) {
   trips.forEach((trip) => {
     dests.find((dest) => {
       modalContentCurrent.innerHTML += `
-  <figure>
-    <p>${trip.date}</P>
-    <img src="${dest.image}" alt="${dest.alt}" height="100px" width="100px"/>
-    <figcaption>${dest.destination}</figcaption>
-  </figure>`
+ <figure>
+   <p>${trip.date}</P>
+   <img src="${dest.image}" alt="${dest.alt}" height="100px" width="100px"/>
+   <figcaption>${dest.destination}</figcaption>
+ </figure>`
     })
   })
 }
 
-// let allDests;
 function renderTripSelect(dests) {
   const tripSelect = document.querySelector('.trip-select')
   let allDests = dests.destinations
   allDests.forEach((dest) => {
     tripSelect.innerHTML += `
-    <option class="dest" id="destination" value="${dest.id}">${dest.destination}</option>
-    `
+   <option class="dest" id="destination" value="${dest.id}">${dest.destination}</option>
+   `
   })
 }
 
+function renderEstimate() {
+  let duration;
+  let travelers;
+  let destinationID = checkIfSelected()
+  inputs.forEach((input) => {
+    if (input.id === 'duration') {
+      duration = input.value
+    }
+    if (input.id === 'travelers') {
+      travelers = input.value
+    }
+    if (input.id === 'undefined') {
+      console.log('no')
+    }
+  })
+  estimateCost(duration, travelers, destinationID, allDests)
+}
+
 function renderEstimatedCost(num) {
+  estimatedCost.classList.remove('hidden')
   estimatedCost.innerText = num
 }
 
@@ -160,6 +176,7 @@ function unhideMainPage() {
   mainTop.classList.remove('hidden')
   mainBottom.classList.remove('hidden')
 }
+
 
 export {
   renderTotalSpent,
