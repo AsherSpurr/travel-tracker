@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { createTrip, estimateCost, allDests } from "./scripts"
+import { createTrip, estimateCost, allDests, getUserLogin } from "./scripts"
 
 const modalPast = document.querySelector('#modal-past')
 const modalCurrent = document.querySelector('#modal-current')
@@ -17,6 +17,19 @@ const estimatedCost = document.querySelector('#estimated-cost')
 const buttonEstimate = document.querySelector('.estimate-cost')
 const errorPlan = document.querySelector('#error-plan')
 const errorMain = document.querySelector('#error-main')
+const mainPage = document.querySelector('main')
+const header = document.querySelector('header')
+const loginPage = document.querySelector('.login-page')
+const buttonLogin = document.querySelector('#button-login')
+const buttonLogOut = document.querySelector('#button-logout')
+// const loginInputs = document.querySelectorAll('.')
+
+buttonLogOut.addEventListener('click', logout)
+
+buttonLogin.addEventListener('click', (e) => {
+  e.preventDefault()
+  grabLogin()
+})
 
 buttonEstimate.addEventListener('click', renderEstimate)
 
@@ -71,6 +84,32 @@ document.querySelectorAll('.image').forEach(img => {
 function checkIfSelected() {
   let x = document.querySelector('.trip-select').value
   return x
+}
+
+function grabLogin() {
+  let userName;
+  let password;
+  inputs.forEach((input) => {
+    if (input.id === 'userName') {
+      userName = input.value
+    }
+    if (input.id === 'password') {
+      password = input.value
+    }
+  })
+  getUserLogin(userName, password)
+}
+
+function login() {
+  mainPage.classList.remove('hidden')
+  header.classList.remove('hidden')
+  loginPage.classList.add('hidden')
+}
+
+function logout() {
+  mainPage.classList.add('hidden')
+  header.classList.add('hidden')
+  loginPage.classList.remove('hidden')
 }
 
 function renderModal(imgValue) {
@@ -194,5 +233,6 @@ export {
   renderTripSelect,
   renderEstimatedCost,
   renderPlanError,
-  renderMainError
+  renderMainError,
+  login
 }

@@ -3,11 +3,8 @@
 // Do not delete or rename this file ********
 import { getData, postTrip, deleteTrip } from './apiCalls';
 
-
-
-
 // eslint-disable-next-line max-len
-import { renderTotalSpent, renderPastTrips, renderCurrentTrips, renderTripSelect, renderEstimatedCost } from './domUpdates';
+import { renderTotalSpent, renderPastTrips, renderCurrentTrips, renderTripSelect, renderEstimatedCost, login } from './domUpdates';
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
 // import './css/index.scss'
@@ -37,7 +34,7 @@ function handleAllData(userData, tripsData, destData) {
 }
 
 
-getUserLogin('traveler30', 'travel') //make dynamic after login
+// getUserLogin('traveler30', 'travel') //make dynamic after login
 
 
 function getUserLogin(userName, password) {
@@ -47,10 +44,14 @@ function getUserLogin(userName, password) {
     console.log('no') //insert error handling
   } else {
     getData(userID)
+    login()
     console.log('yes')
   }
 }
 
+// function resetLogout() {
+
+// }
 
 function userTrips(userData, tripsData) {
   let trips = tripsData.trips
@@ -182,5 +183,6 @@ export {
   createTrip,
   estimateCost,
   allDests,
-  allTrips
+  allTrips,
+  getUserLogin
 }
