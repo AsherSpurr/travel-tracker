@@ -4,6 +4,8 @@
 import { getData, postTrip, deleteTrip } from './apiCalls';
 
 
+
+
 // eslint-disable-next-line max-len
 import { renderTotalSpent, renderPastTrips, renderCurrentTrips, renderTripSelect, renderEstimatedCost } from './domUpdates';
 // An example of how you tell webpack to use a CSS (SCSS) file
@@ -11,13 +13,16 @@ import './css/styles.css';
 // import './css/index.scss'
 import './domUpdates'
 
+
 import './images/turing-logo.png'
 import './images/loc1.jpg'
 import './images/loc2.jpg'
 import './images/loc3.jpg'
 
+
 let userId;
 let allTrips;
+let allDests;
 let pastTrips;
 let currentTrips;
 /* <><><><><><><><><><><><><><><> Javascript <><><><><><><><><><><><><><> */
@@ -27,14 +32,17 @@ function handleAllData(userData, tripsData, destData) {
   sortCurrentDests(currentTrips, destData)
   renderTripSelect(destData)
   allTrips = tripsData;
-  estimateCost(tripsData, destData)
+  allDests = destData;
+  // estimateCost(tripsData, destData)
 }
+
 
 getUserLogin('traveler30', 'travel') //make dynamic after login
 
+
 function getUserLogin(userName, password) {
   let userID = userName.replace('traveler', '')
-  userId = userID 
+  userId = userID
   if (userName !== 'traveler' + userID || password !== 'travel') {
     console.log('no') //insert error handling
   } else {
@@ -42,6 +50,7 @@ function getUserLogin(userName, password) {
     console.log('yes')
   }
 }
+
 
 function userTrips(userData, tripsData) {
   let trips = tripsData.trips
@@ -53,17 +62,20 @@ function userTrips(userData, tripsData) {
   return sortedTrips
 }
 
+
 function sortPastTrips(trips) {
   return pastTrips = trips.filter((trip) => {
     return trip.status === 'approved'
   })
 }
 
+
 function sortCurrentTrips(trips) {
   return currentTrips = trips.filter((trip) => {
     return trip.status === 'pending'
   })
 }
+
 
 function sortPastDests(pastTrips, dests) {
   let allDests = dests.destinations
@@ -78,6 +90,7 @@ function sortPastDests(pastTrips, dests) {
   return pastDests
 }
 
+
 function sortCurrentDests(currentTrips, dests) {
   let allDests = dests.destinations
   let tripIDs = currentTrips.map((trip) => {
@@ -90,9 +103,10 @@ function sortCurrentDests(currentTrips, dests) {
   return currentDests
 }
 
+
 function yearlyCost(trips, dests) {
   let targetTrips = trips.filter((trip) => {
-    return trip.date.includes('2022')
+    return trip.date.includes('2020')
   })
   let totalCost = 0
   targetTrips.forEach((trip) => {
@@ -110,6 +124,7 @@ function yearlyCost(trips, dests) {
   return totalCost
 }
 
+
 function createTrip(dateValue, durationValue, travelersValue, destIDValue) {
   let durationNum = Number(durationValue)
   let travelerNum = Number(travelersValue)
@@ -117,6 +132,7 @@ function createTrip(dateValue, durationValue, travelersValue, destIDValue) {
   let userIdNum = Number(userId)
   let targetIndex = allTrips.trips.length + 1
   let formatDate = dateValue.replaceAll('-', '/')
+
 
   let trip = {
     id: targetIndex,
@@ -131,20 +147,17 @@ function createTrip(dateValue, durationValue, travelersValue, destIDValue) {
   postTrip(trip)
 }
 
-function estimateCost(tripsData, destsData) {
-  let trips = tripsData.trips
+function estimateCost(duration, travelers, destID, destsData) {
   let dests = destsData.destinations
-  let targetTripID = trips.length - 1
-  let targetTrip = trips[targetTripID]
-
+  let destNum = Number(destID)
+  let targetDest = dests.find((dest) => {
+    return destNum === dest.id
+  })
   let totalCost = 0
 
-  let targetDest = dests.find((dest) => {
-    return targetTrip.destinationID === dest.id
-  })
   if (targetDest) {
-    let flightCost = targetDest.estimatedFlightCostPerPerson * targetTrip.travelers
-    let lodgingCost = targetDest.estimatedLodgingCostPerDay * targetTrip.duration
+    let flightCost = targetDest.estimatedFlightCostPerPerson * travelers
+    let lodgingCost = targetDest.estimatedLodgingCostPerDay * duration
     let agencyFee = (flightCost + lodgingCost) * .10
     totalCost += flightCost + lodgingCost + agencyFee
   }
@@ -152,9 +165,11 @@ function estimateCost(tripsData, destsData) {
   return totalCost
 }
 
-// deleteTrip(204)
+// deleteTrip(208)
+
 
 // getData()
+
 
 export {
   userTrips,
@@ -164,4 +179,7 @@ export {
   sortCurrentDests,
   handleAllData,
   createTrip,
+  estimateCost,
+  allDests,
+  allTrips
 }
