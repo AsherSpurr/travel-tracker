@@ -15,6 +15,8 @@ const buttonHome = document.querySelector('#button-home')
 const overlay = document.querySelector('.overlay')
 const estimatedCost = document.querySelector('#estimated-cost')
 const buttonEstimate = document.querySelector('.estimate-cost')
+const errorPlan = document.querySelector('#error-plan')
+const errorMain = document.querySelector('#error-main')
 
 buttonEstimate.addEventListener('click', renderEstimate)
 
@@ -177,11 +179,20 @@ function unhideMainPage() {
   mainBottom.classList.remove('hidden')
 }
 
+function renderPlanError(err) {
+  errorPlan.innerText = `Sorry an unexpected error has occured. ${err}`
+}
+
+function renderMainError(err) {
+  errorMain.innerText = `Sorry an unexpected error has occured. ${err}`
+}
 
 export {
   renderTotalSpent,
   renderPastTrips,
   renderCurrentTrips,
   renderTripSelect,
-  renderEstimatedCost
+  renderEstimatedCost,
+  renderPlanError,
+  renderMainError
 }

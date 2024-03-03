@@ -56,6 +56,7 @@
       </section> -->
     <section class="section-main-top">
       <article class="article-main" id="article-main-top">
+        <p class="error" id="error-main"></p>
         <h2>Total spent this year</h2><br>
         <p class="total-spent">---</p>
       </article>
@@ -126,9 +127,9 @@
         <label for="date">Select the trips start date</label>
         <input type="date" name="date" id="date" required /><br>
         <label for="duration">Trip length</label>
-        <input type="number" name="duration" id="duration" required /><br>
+        <input type="number" name="duration" id="duration" required min="1"/><br>
         <label for="travelers">Number of travelers</label>
-        <input type="number" name="travelers" id="travelers" required /><br>
+        <input type="number" name="travelers" id="travelers" required min="1"/><br>
         <label for="destination">Choose you're destination</label>
         <select class="trip-select" name="destination" id="destination" required>
         </select><br>
@@ -139,6 +140,7 @@
         <dt>Estimated Cost</dt>
         <dd class="hidden" id="estimated-cost">---</dd>
       </dl>
+      <p class="error" id="error-plan"></p>
     </section>
   </main>
 
