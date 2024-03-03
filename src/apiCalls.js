@@ -1,5 +1,6 @@
 
 import { handleAllData } from "./scripts"
+import { renderPlanError, renderMainError } from "./domUpdates"
 
 function getData(userID) {
 
@@ -22,6 +23,9 @@ function getData(userID) {
       console.log('destinations', destinations)
       handleAllData(user, trips, destinations)
     })
+    .catch(err => () => {
+      renderMainError(err)
+    })
 }
 
 function postTrip(trip) {
@@ -33,7 +37,9 @@ function postTrip(trip) {
     }
   })
     .then(resp => console.log(resp.json()))
-    .catch(err => console.log(err))
+    .catch(err => () => {
+      renderPlanError(err)
+    })
 }
 
 function deleteTrip(tripNum) {
