@@ -13,14 +13,14 @@
   <div class="login-page">
     <div class="login-cont">
       <form class="form-login">
-        <p class="error"></p>
+        <p class="error" id="error-login"></p>
         <div class="input-cont">
           <label for="userName">User</label><br>
-          <input type="text" id="userName" name="userName" required />
+          <input type="text" id="userName" name="userName" required minlength="9"/>
         </div>
         <div class="input-cont">
           <label for="password">Password</label><br>
-          <input type="password" id="password" name="password" />
+          <input type="password" id="password" name="password" required minLength="7"/>
         </div>
         <button class="button-nav" id="button-login">Sign in</button>
       </form>

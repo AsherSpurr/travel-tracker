@@ -22,7 +22,7 @@ const header = document.querySelector('header')
 const loginPage = document.querySelector('.login-page')
 const buttonLogin = document.querySelector('#button-login')
 const buttonLogOut = document.querySelector('#button-logout')
-// const loginInputs = document.querySelectorAll('.')
+const errorLogin = document.querySelector('#error-login')
 
 buttonLogOut.addEventListener('click', logout)
 
@@ -106,7 +106,18 @@ function login() {
   loginPage.classList.add('hidden')
 }
 
+function loginError() {
+  errorLogin.innerText = 'Username or Password incorrect'
+  setTimeout(removeError, 3000)
+}
+
+function removeError() {
+  errorLogin.innerText = ''
+}
+
 function logout() {
+  document.querySelector('.form-login').reset()
+
   mainPage.classList.add('hidden')
   header.classList.add('hidden')
   loginPage.classList.remove('hidden')
@@ -234,5 +245,6 @@ export {
   renderEstimatedCost,
   renderPlanError,
   renderMainError,
-  login
+  login,
+  loginError
 }
