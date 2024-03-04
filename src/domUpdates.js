@@ -160,10 +160,12 @@ function renderTotalSpent(total) {
 function renderPastTrips(trips, dests) {
   const modalContent = document.querySelector('#modal-content-past')
   trips.forEach((trip) => {
+    let date = trip.date
+    let dateRev = date.split('/').reverse().join('/')
     dests.find((dest) => {
       modalContent.innerHTML += `
  <figure>
-   <p>${trip.date}</P>
+   <p>${dateRev}</P>
    <img class="modal-img" src="${dest.image}" alt="${dest.alt}" height="200px" width="200px"/>
    <figcaption>${dest.destination}</figcaption>
  </figure>`
@@ -174,10 +176,12 @@ function renderPastTrips(trips, dests) {
 function renderCurrentTrips(trips, dests) {
   const modalContentCurrent = document.querySelector('#modal-content-current')
   trips.forEach((trip) => {
+    let date = trip.date
+    let dateRev = date.split('/').reverse().join('/')
     dests.find((dest) => {
       modalContentCurrent.innerHTML += `
  <figure>
-   <p>${trip.date}</P>
+   <p>${dateRev}</P>
    <img class="modal-img" src="${dest.image}" alt="${dest.alt}" height="200px" width="200px"/>
    <figcaption>${dest.destination}</figcaption>
  </figure>`
