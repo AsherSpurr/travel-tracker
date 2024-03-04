@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { createTrip, estimateCost, allDests, getUserLogin, userId } from "./scripts"
+import { createTrip, estimateCost, allDests, getUserLogin} from "./scripts"
 import { getData } from "./apiCalls"
 
 const modalPast = document.querySelector('#modal-past')
@@ -28,6 +28,7 @@ const errorLogin = document.querySelector('#error-login')
 window.addEventListener('load', () => {
   if (sessionStorage.getItem('user')) {
     let user = sessionStorage.getItem('user')
+    console.log('dom user', user)
     getData(user)
   }
 })
@@ -108,6 +109,7 @@ function grabLogin() {
 }
 
 function login() {
+  // location.reload()
   mainPage.classList.remove('hidden')
   header.classList.remove('hidden')
   loginPage.classList.add('hidden')
@@ -162,7 +164,7 @@ function renderPastTrips(trips, dests) {
       modalContent.innerHTML += `
  <figure>
    <p>${trip.date}</P>
-   <img src="${dest.image}" alt="${dest.alt}" height="100px" width="100px"/>
+   <img class="modal-img" src="${dest.image}" alt="${dest.alt}" height="200px" width="200px"/>
    <figcaption>${dest.destination}</figcaption>
  </figure>`
     })
@@ -176,7 +178,7 @@ function renderCurrentTrips(trips, dests) {
       modalContentCurrent.innerHTML += `
  <figure>
    <p>${trip.date}</P>
-   <img src="${dest.image}" alt="${dest.alt}" height="100px" width="100px"/>
+   <img class="modal-img" src="${dest.image}" alt="${dest.alt}" height="200px" width="200px"/>
    <figcaption>${dest.destination}</figcaption>
  </figure>`
     })
