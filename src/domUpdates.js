@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
-import { createTrip, estimateCost, allDests, getUserLogin } from "./scripts"
+import { createTrip, estimateCost, allDests, getUserLogin, userId } from "./scripts"
+import { getData } from "./apiCalls"
 
 const modalPast = document.querySelector('#modal-past')
 const modalCurrent = document.querySelector('#modal-current')
@@ -23,6 +24,13 @@ const loginPage = document.querySelector('.login-page')
 const buttonLogin = document.querySelector('#button-login')
 const buttonLogOut = document.querySelector('#button-logout')
 const errorLogin = document.querySelector('#error-login')
+
+window.addEventListener('load', () => {
+  if (sessionStorage.getItem('user')) {
+    let user = sessionStorage.getItem('user')
+    getData(user)
+  }
+})
 
 buttonLogOut.addEventListener('click', logout)
 
@@ -67,7 +75,6 @@ buttonSubmit.addEventListener('click', () => {
   })
   createTrip(date, duration, travelers, destinationID)
 })
-
 
 document.querySelectorAll('.button-modal').forEach((button) => {
   button.addEventListener('click', () => {
@@ -117,10 +124,8 @@ function removeError() {
 
 function logout() {
   document.querySelector('.form-login').reset()
-
-  mainPage.classList.add('hidden')
-  header.classList.add('hidden')
-  loginPage.classList.remove('hidden')
+  sessionStorage.clear('user')
+  location.reload()
 }
 
 function renderModal(imgValue) {
@@ -177,6 +182,21 @@ function renderCurrentTrips(trips, dests) {
     })
   })
 }
+
+// function renderPOSTtrips(trips, dests) {
+//   const modalContentCurrent = document.querySelector('#modal-content-current')
+//   let destsProper = dests.destinations
+//   trips.forEach((trip) => {
+//     destsProper.find((dest) => {
+//       modalContentCurrent.innerHTML += `
+// <figure>
+//  <p>${trip.date}</P>
+//  <img src="${dest.image}" alt="${dest.alt}" height="100px" width="100px"/>
+//  <figcaption>${dest.destination}</figcaption>
+// </figure>`
+//     })
+//   })
+// }
 
 function renderTripSelect(dests) {
   const tripSelect = document.querySelector('.trip-select')
@@ -246,5 +266,6 @@ export {
   renderPlanError,
   renderMainError,
   login,
-  loginError
+  loginError,
+
 }

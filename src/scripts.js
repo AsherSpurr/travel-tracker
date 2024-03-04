@@ -30,24 +30,17 @@ function handleAllData(userData, tripsData, destData) {
   renderTripSelect(destData)
   allTrips = tripsData;
   allDests = destData;
-  // estimateCost(tripsData, destData)
 }
-
-
-// getUserLogin('traveler30', 'travel') //make dynamic after login
-
 
 function getUserLogin(userName, password) {
   let userID = userName.replace('traveler', '')
-  userId = userID
   if (userName !== 'traveler' + userID || password !== 'travel') {
     loginError()
-    console.log('no') //insert error handling
   } else {
+    sessionStorage.setItem('user', userID)
     getData(userID)
-    login()
-    console.log('yes')
   }
+  userId = sessionStorage.getItem('user')
 }
 
 function userTrips(userData, tripsData) {
@@ -88,19 +81,18 @@ function sortPastDests(pastTrips, dests) {
   return pastDests
 }
 
-
+let currentDests;
 function sortCurrentDests(currentTrips, dests) {
   let allDests = dests.destinations
   let tripIDs = currentTrips.map((trip) => {
     return trip.destinationID
   })
-  let currentDests = allDests.filter((dest) => {
+  currentDests = allDests.filter((dest) => {
     return tripIDs.includes(dest.id)
   })
   renderCurrentTrips(currentTrips, currentDests)
   return currentDests
 }
-
 
 function yearlyCost(trips, dests) {
   let targetTrips = trips.filter((trip) => {
@@ -145,6 +137,7 @@ function createTrip(dateValue, durationValue, travelersValue, destIDValue) {
   postTrip(trip)
 }
 
+
 function estimateCost(duration, travelers, destID, destsData) {
   let dests = destsData.destinations
   let destNum = Number(destID)
@@ -181,5 +174,8 @@ export {
   estimateCost,
   allDests,
   allTrips,
+  currentDests,
   getUserLogin,
+  login,
+  userId
 }

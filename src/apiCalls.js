@@ -1,5 +1,7 @@
+/* eslint-disable max-len */
 
-import { handleAllData } from "./scripts"
+import { handleAllData, login } from "./scripts"
+
 import { renderPlanError, renderMainError } from "./domUpdates"
 
 function getData(userID) {
@@ -22,6 +24,7 @@ function getData(userID) {
       console.log('trip', trips)
       console.log('destinations', destinations)
       handleAllData(user, trips, destinations)
+      login()
     })
     .catch(err => () => {
       renderMainError(err)
@@ -37,6 +40,10 @@ function postTrip(trip) {
     }
   })
     .then(resp => console.log(resp.json()))
+    // .then(data => () => {
+    //   getData(userId)
+    //   console.log(data)
+    // })
     .catch(err => () => {
       renderPlanError(err)
     })
