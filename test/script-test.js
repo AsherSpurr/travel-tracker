@@ -72,6 +72,47 @@ function getUserLogin(userName, password) {
   }
 }
 
+
+function createTrip(dateValue, durationValue, travelersValue, destIDValue, userId, allTrips) {
+  let durationNum = Number(durationValue)
+  let travelerNum = Number(travelersValue)
+  let destIDNum = Number(destIDValue)
+  let userIdNum = Number(userId)
+  let targetIndex = allTrips.trips.length + 1
+  let formatDate = dateValue.replaceAll('-', '/')
+
+
+  let trip = {
+    id: targetIndex,
+    userID: userIdNum,
+    destinationID: destIDNum,
+    travelers: travelerNum,
+    date: formatDate,
+    duration: durationNum,
+    status: 'pending',
+    suggestedActivities: ['none'],
+  }
+  return trip
+}
+
+
+function estimateCost(duration, travelers, destID, destsData) {
+  let dests = destsData.destinations
+  let destNum = Number(destID)
+  let targetDest = dests.find((dest) => {
+    return destNum === dest.id
+  })
+  let totalCost = 0
+
+  if (targetDest) {
+    let flightCost = targetDest.estimatedFlightCostPerPerson * travelers
+    let lodgingCost = targetDest.estimatedLodgingCostPerDay * duration
+    let agencyFee = (flightCost + lodgingCost) * .10
+    totalCost += flightCost + lodgingCost + agencyFee
+  }
+  return totalCost
+}
+
 export {
   userTrips,
   sortPastTrips,
@@ -79,5 +120,7 @@ export {
   yearlyCost,
   sortCurrentDests,
   sortPastDests,
-  getUserLogin
+  getUserLogin,
+  createTrip,
+  estimateCost
 }

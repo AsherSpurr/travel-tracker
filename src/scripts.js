@@ -45,6 +45,7 @@ function getUserLogin(userName, password) {
   // storeUserID(userId)
   console.log('inside user', userId)
 }
+
 userId = sessionStorage.getItem('user')
 console.log('global user', userId)
 
@@ -57,7 +58,6 @@ function userTrips(userData, tripsData) {
   sortCurrentTrips(sortedTrips)
   return sortedTrips
 }
-
 
 function sortPastTrips(trips) {
   return pastTrips = trips.filter((trip) => {
