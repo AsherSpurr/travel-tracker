@@ -28,10 +28,10 @@
   </div>
   <header class="hidden">
     <h1>JourneyLogix</h1>
-    <div>
+    <div class="margin-right">
       <button class="button-nav" id="button-home">Home</button>
       <button class="button-nav" id="button-plan">Plan</button>
-      <button class="button-nav" id="button-cost">Cost</button>
+      <!-- <button class="button-nav" id="button-cost">Cost</button> -->
     </div>
     <div>
       <button class="button-nav" id="button-logout">Sign out</button>
@@ -54,12 +54,11 @@
               <button class="button-modal" id="modal-button-past">X</button>
             </div>
             <div class="modal-content" id="modal-content-past">
-              <h4>Past Trips</h4>
               <!-- <p class="filler">No Past Trips</p> -->
             </div>
           </section>
           <div class="row-even">
-            <figure id="fig-past-trips">
+            <figure id="fig-past-trips" aria-label="past-trips">
               <img class="image" id="img-past" src="./images/loc2.jpg"
                 alt="man walking a snowy path with mountains ahead" height="200px" width="200px" />
               <div class="overlay-fig">
@@ -72,16 +71,15 @@
               <button class="button-modal" id="modal-button-current">X</button>
             </div>
             <div class="modal-content" id="modal-content-current">
-              <h4>Current Trips</h4>
               <!-- <p class="filler">No Current Trips</p> -->
             </div>
           </section>
           <div class="row-even">
-            <figure id="fig-current-trips">
+            <figure id="fig-current-trips" aria-label="upcoming-trips">
               <img class="image" id="img-current" src="./images/loc3.jpg"
                 alt="woman standing in tree pose on top a mountain" height="100px" width="100px" />
               <div class="overlay-fig">
-                <p class="overlay-text">Current trips</p>
+                <p class="overlay-text">Upcoming Trips</p>
               </div>
             </figure>
           </div>
@@ -90,7 +88,6 @@
               <button class="button-modal" id="modal-button-future">X</button>
             </div>
             <div class="modal-content" id="modal-content-future">
-              <h4>Current Trips</h4>
               <p>No Current Trips</p>
             </div>
           </section>
@@ -99,7 +96,7 @@
               <img class="image" id="img-future" src="./images/loc1.jpg"
                 alt="small plane landing in water in front of a small tropical island" height="100px" width="100px" />
               <div class="overlay-fig">
-                <p class="overlay-text">Upcoming trips</p>
+                <p class="overlay-text">---</p>
               </div>
             </figure>
           </div>
@@ -121,7 +118,7 @@
       </form>
       <dl>
         <button class="estimate-cost">Estimate Cost</button>
-        <dt>Estimated Cost</dt>
+        <dt aria-label="estimated cost"></dt>
         <dd class="hidden" id="estimated-cost">---</dd>
       </dl>
       <p class="error" id="error-plan"></p>

@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { createTrip, estimateCost, allDests, getUserLogin, userId } from "./scripts"
+import { createTrip, estimateCost, allDests, getUserLogin} from "./scripts"
 import { getData } from "./apiCalls"
 
 const modalPast = document.querySelector('#modal-past')
@@ -28,6 +28,7 @@ const errorLogin = document.querySelector('#error-login')
 window.addEventListener('load', () => {
   if (sessionStorage.getItem('user')) {
     let user = sessionStorage.getItem('user')
+    console.log('dom user', user)
     getData(user)
   }
 })
@@ -108,6 +109,7 @@ function grabLogin() {
 }
 
 function login() {
+  // location.reload()
   mainPage.classList.remove('hidden')
   header.classList.remove('hidden')
   loginPage.classList.add('hidden')
@@ -152,34 +154,40 @@ function hideModal(buttonValue) {
 }
 
 function renderTotalSpent(total) {
-  totalSpent.innerText = total
+  totalSpent.innerText = `$${total}`
 }
 
 function renderPastTrips(trips, dests) {
   const modalContent = document.querySelector('#modal-content-past')
   trips.forEach((trip) => {
-    dests.find((dest) => {
-      modalContent.innerHTML += `
- <figure>
-   <p>${trip.date}</P>
-   <img src="${dest.image}" alt="${dest.alt}" height="100px" width="100px"/>
-   <figcaption>${dest.destination}</figcaption>
- </figure>`
+    let date = trip.date
+    let dateRev = date.split('/').reverse().join('/')
+    let targetDest = dests.find((dest) => {
+      return dest.id === trip.destinationID
     })
+    modalContent.innerHTML += `
+    <figure>
+      <p class="modal-date">${dateRev}</P>
+      <img class="modal-img" src="${targetDest.image}" alt="${targetDest.alt}" height="200px" width="200px"/>
+      <figcaption>${targetDest.destination}</figcaption>
+    </figure>`
   })
 }
 
 function renderCurrentTrips(trips, dests) {
   const modalContentCurrent = document.querySelector('#modal-content-current')
   trips.forEach((trip) => {
-    dests.find((dest) => {
-      modalContentCurrent.innerHTML += `
- <figure>
-   <p>${trip.date}</P>
-   <img src="${dest.image}" alt="${dest.alt}" height="100px" width="100px"/>
-   <figcaption>${dest.destination}</figcaption>
- </figure>`
+    let date = trip.date
+    let dateRev = date.split('/').reverse().join('/')
+    let targetDest = dests.find((dest) => {
+      return dest.id === trip.destinationID
     })
+    modalContentCurrent.innerHTML += `
+    <figure>
+      <p class="modal-date">${dateRev}</P>
+      <img class="modal-img" src="${targetDest.image}" alt="${targetDest.alt}" height="200px" width="200px"/>
+      <figcaption>${targetDest.destination}</figcaption>
+    </figure>`
   })
 }
 

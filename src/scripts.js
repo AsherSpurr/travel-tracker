@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
-import { getData, postTrip, deleteTrip } from './apiCalls';
+import { getData, postTrip } from './apiCalls';
 
 // eslint-disable-next-line max-len
 import { renderTotalSpent, renderPastTrips, renderCurrentTrips, renderTripSelect, renderEstimatedCost, login, loginError } from './domUpdates';
@@ -39,9 +39,14 @@ function getUserLogin(userName, password) {
   } else {
     sessionStorage.setItem('user', userID)
     getData(userID)
+    // login()
   }
   userId = sessionStorage.getItem('user')
+  // storeUserID(userId)
+  console.log('inside user', userId)
 }
+userId = sessionStorage.getItem('user')
+console.log('global user', userId)
 
 function userTrips(userData, tripsData) {
   let trips = tripsData.trips
@@ -114,6 +119,9 @@ function yearlyCost(trips, dests) {
   return totalCost
 }
 
+// function storeUserID(userID) {
+//   return userID
+// }
 
 function createTrip(dateValue, durationValue, travelersValue, destIDValue) {
   let durationNum = Number(durationValue)
