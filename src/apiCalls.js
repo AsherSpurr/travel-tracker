@@ -2,7 +2,7 @@
 
 import { handleAllData, login } from "./scripts"
 
-import { renderPlanError, renderMainError } from "./domUpdates"
+import { renderMainError, renderSuccessMessage } from "./domUpdates"
 
 function getData(userID) {
 
@@ -32,27 +32,28 @@ function getData(userID) {
 }
 
 function postTrip(trip) {
-  if (trip.userID === null) {
-    console.log('shit')
-    renderMainError('')
-  } else {
-    fetch('http://localhost:3001/api/v1/trips', {
-      method: 'POST',
-      body: JSON.stringify(trip),
-      headers: {
-        'Content-Type': 'application/json' 
+  fetch('http://localhost:3001/api/v1/trips', {
+    method: 'POST',
+    body: JSON.stringify(trip),
+    headers: {
+      'Content-Type': 'application/json' 
+    }
+  })
+    .then(resp => () => {
+      if (!resp.ok) {
+        console.log('no')
+        setTimeout(renderMainError, 3000)
+      } else {
+        console.log('yes')
+        setTimeout(renderSuccessMessage, 3000)
+        resp.json()
       }
     })
-      .then(resp => console.log(resp.json()))
-    // .then(data => () => {
-    //   getData(userId)
-    //   console.log(data)
-    // })
-      .catch(err => () => {
-        renderPlanError(err)
-      })
-  }
+    .catch(err => () => {
+      renderMainError(err)
+    })
 }
+
 
 function deleteTrip(tripNum) {
   fetch(`http://localhost:3001/api/v1/trips/${tripNum}`, {
