@@ -4,7 +4,7 @@ const expect = chai.expect;
 
 import tripsSample from './sample-trips';
 import { userTrips, sortPastTrips, sortCurrentTrips, sortCurrentDests, sortPastDests,
-  yearlyCost, getUserLogin } from './script-test';
+  yearlyCost, getUserLogin, createTrip, estimateCost } from './script-test';
 import userSample from './sample-user';
 import destsSample from './sample-dests'
 
@@ -179,14 +179,28 @@ describe('getUserLogin', () => {
   })
 })
 
-describe('', () => {
-  it.skip('', () => {
-
+describe('createTrip', () => {
+  it('should create an object to POST', () => {
+    let e = createTrip('2024/03/12', '1', '1', '4', '11', tripsSample)
+    console.log(tripsSample.trips.length)
+    expect(e).to.deep.equal({
+      "id": 204,
+      "userID": 11,
+      "destinationID": 4,
+      "travelers": 1,
+      "date": "2024/03/12",
+      "duration": 1,
+      "status": "pending",
+      "suggestedActivities": [
+        "none"
+      ]
+    })
   })
 })
 
-describe('', () => {
-  it.skip('', () => {
-
+describe('estimateCost', () => {
+  it('should calculate expenses for the trip with 10% agency fee', () => {
+    let e = estimateCost('1', '1', '4', destsSample)
+    expect(e).to.equal(456.5)
   })
 })
