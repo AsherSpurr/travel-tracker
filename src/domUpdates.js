@@ -24,6 +24,9 @@ const loginPage = document.querySelector('.login-page')
 const buttonLogin = document.querySelector('#button-login')
 const buttonLogOut = document.querySelector('#button-logout')
 const errorLogin = document.querySelector('#error-login')
+const bodySelect = document.querySelector('body')
+const buttonDyslexic = document.querySelector('#button-dyslexia')
+const buttons = document.querySelectorAll('button')
 
 window.addEventListener('load', () => {
   if (sessionStorage.getItem('user')) {
@@ -86,6 +89,13 @@ document.querySelectorAll('.button-modal').forEach((button) => {
 document.querySelectorAll('.image').forEach(img => {
   img.addEventListener('click', () => {
     renderModal(img.id)
+  })
+})
+
+buttonDyslexic.addEventListener('click', () => {
+  bodySelect.classList.toggle('dyslexia-font')
+  buttons.forEach((button) => {
+    button.classList.toggle('dyslexia-font')
   })
 })
 
