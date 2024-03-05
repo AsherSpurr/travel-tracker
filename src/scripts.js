@@ -121,10 +121,11 @@ function createTrip(dateValue, durationValue, travelersValue, destIDValue) {
   let travelerNum = Number(travelersValue)
   let destIDNum = Number(destIDValue)
   let userIdNum = Number(userId)
-  // let targetIndex = allTrips.trips.length + 1
+  let targetIndex = allTrips.trips.length + 1
   let formatDate = dateValue.replaceAll('-', '/')
 
   let trip = {
+    id: targetIndex,
     userID: userIdNum,
     destinationID: destIDNum,
     travelers: travelerNum,

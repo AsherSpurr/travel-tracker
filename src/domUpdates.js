@@ -58,8 +58,8 @@ buttonPlan.addEventListener('click', () => {
 
 options.addEventListener('change', checkIfSelected)
 
-buttonSubmit.addEventListener('click', (e) => {
-  e.preventDefault()
+buttonSubmit.addEventListener('click', () => {
+  // e.preventDefault()
   let date;
   let duration;
   let travelers;
