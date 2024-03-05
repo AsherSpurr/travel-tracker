@@ -42,8 +42,10 @@ function getUserLogin(userName, password) {
     // login()
   }
   userId = sessionStorage.getItem('user')
+  // storeUserID(userId)
   console.log('inside user', userId)
 }
+userId = sessionStorage.getItem('user')
 console.log('global user', userId)
 
 function userTrips(userData, tripsData) {
@@ -117,6 +119,9 @@ function yearlyCost(trips, dests) {
   return totalCost
 }
 
+// function storeUserID(userID) {
+//   return userID
+// }
 
 function createTrip(dateValue, durationValue, travelersValue, destIDValue) {
   let durationNum = Number(durationValue)

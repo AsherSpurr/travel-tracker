@@ -154,7 +154,7 @@ function hideModal(buttonValue) {
 }
 
 function renderTotalSpent(total) {
-  totalSpent.innerText = total
+  totalSpent.innerText = `$${total}`
 }
 
 function renderPastTrips(trips, dests) {
@@ -162,14 +162,15 @@ function renderPastTrips(trips, dests) {
   trips.forEach((trip) => {
     let date = trip.date
     let dateRev = date.split('/').reverse().join('/')
-    dests.find((dest) => {
-      modalContent.innerHTML += `
- <figure>
-   <p>${dateRev}</P>
-   <img class="modal-img" src="${dest.image}" alt="${dest.alt}" height="200px" width="200px"/>
-   <figcaption>${dest.destination}</figcaption>
- </figure>`
+    let targetDest = dests.find((dest) => {
+      return dest.id === trip.destinationID
     })
+    modalContent.innerHTML += `
+    <figure>
+      <p class="modal-date">${dateRev}</P>
+      <img class="modal-img" src="${targetDest.image}" alt="${targetDest.alt}" height="200px" width="200px"/>
+      <figcaption>${targetDest.destination}</figcaption>
+    </figure>`
   })
 }
 
@@ -178,14 +179,15 @@ function renderCurrentTrips(trips, dests) {
   trips.forEach((trip) => {
     let date = trip.date
     let dateRev = date.split('/').reverse().join('/')
-    dests.find((dest) => {
-      modalContentCurrent.innerHTML += `
- <figure>
-   <p>${dateRev}</P>
-   <img class="modal-img" src="${dest.image}" alt="${dest.alt}" height="200px" width="200px"/>
-   <figcaption>${dest.destination}</figcaption>
- </figure>`
+    let targetDest = dests.find((dest) => {
+      return dest.id === trip.destinationID
     })
+    modalContentCurrent.innerHTML += `
+    <figure>
+      <p class="modal-date">${dateRev}</P>
+      <img class="modal-img" src="${targetDest.image}" alt="${targetDest.alt}" height="200px" width="200px"/>
+      <figcaption>${targetDest.destination}</figcaption>
+    </figure>`
   })
 }
 

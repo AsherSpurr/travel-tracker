@@ -25,6 +25,9 @@ header {
   /* padding-top: 1em; */
 }
 
+h1 {
+  margin-left: 1.5em;
+}
 
 #button-login,
 .button-nav {
@@ -49,7 +52,7 @@ header {
 }
 
 .button-nav:hover {
-  background:rgba(0, 0, 0, 0.1);
+  background:  rgba(226, 185, 185, .15);
 }
 
 #button-login,
@@ -64,7 +67,7 @@ header {
 #button-logout:hover,
 .button-form:hover,
 .estimate-cost:hover {
-  background: rgba(0, 0, 0, .8);
+  background: rgba(49, 28, 28, 0.8);
 }
 
 #button-logout {
@@ -73,6 +76,10 @@ header {
 
 #button-login {
   margin-left: 3em;
+}
+
+.margin-right {
+  margin-right: 5em;
 }
 
 .overlay {
@@ -95,7 +102,7 @@ button:hover {
 .login-page {
   height: 100vh;
   width: 100%;
-  background-color: #e2b9b9;
+  background-color: rgb(226, 185, 185);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -150,7 +157,13 @@ button:hover {
   /* justify-content: space-around; */
 }
 
-input,
+#error-main {
+  font-size: xx-large;
+}
+
+#date,
+#duration,
+#travelers,
 select {
   margin-right: 20em;
   min-height: 25px;
@@ -204,8 +217,10 @@ h2 {
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin-bottom: 5em;
   /* border-radius: 15px; */
-  background:rgba(0, 0, 0, 0.1);
+  /* background:rgba(0, 0, 0, 0.1); */
+  background: rgb(226, 185, 185, .3);
   box-shadow: .5px .5px 4px rgba(0, 0, 0, 0.2);
   /* background: rgb(255,247,225); */
 }
@@ -234,6 +249,7 @@ h4 {
 
 .image:hover {
   cursor: pointer;
+  opacity: 50%;
 }
 
 .flex {
@@ -251,6 +267,14 @@ h4 {
 
 .modal-img {
   border-radius: 10px;
+}
+
+.modal-date {
+  border-radius: 15px;
+  border: 1px black solid;
+  max-width: fit-content;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 figcaption {
@@ -299,6 +323,10 @@ figcaption {
   justify-content: space-between;
 }
 
+.overlay-text {
+  font-size: 1.2em;
+  font-weight: 800;
+} 
 
 /* 
 .overlay-fig {
