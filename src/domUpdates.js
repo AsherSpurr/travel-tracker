@@ -58,8 +58,8 @@ buttonPlan.addEventListener('click', () => {
 
 options.addEventListener('change', checkIfSelected)
 
-buttonSubmit.addEventListener('click', () => {
-  // e.preventDefault()
+buttonSubmit.addEventListener('click', (e) => {
+  e.preventDefault()
   let date;
   let duration;
   let travelers;
@@ -93,25 +93,16 @@ document.querySelectorAll('.image').forEach(img => {
   })
 })
 
-// document.querySelectorAll('figure').forEach(fig => {
-//   fig.addEventListener('keydown', (e) => {
-//     console.log(e.key)
-//     if (e.code === 'Enter') {
-//       document.activeElement.click()
-//     }
-//   })
-// })
-
-// document.querySelectorAll('figure').forEach(fig => {
-//   fig.addEventListener('keydown', (e) => {
-//     console.log('Key pressed:', e.key, ' | Code:', e.code);
-
-//     if (e.code === 'Enter') {
-//       // e.preventDefault(); // Prevent the default 'Enter' key behavior
-//       fig.click();
-//     }
-//   });
-// });
+document.querySelectorAll('figure').forEach(fig => {
+  fig.addEventListener('keypress', (e) => {
+    console.log(e.key)
+    if (e.code === 'Enter') {
+      // document.activeElement.click()
+      //  e.preventDefault(); 
+      // fig.click();
+    }
+  })
+})
 
 buttonDyslexic.addEventListener('click', () => {
   bodySelect.classList.toggle('dyslexia-font')

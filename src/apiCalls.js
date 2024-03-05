@@ -50,6 +50,7 @@ function postTrip(trip) {
       }
     })
     .catch(err => () => {
+      console.log('catch')
       renderMainError(err)
     })
 }
