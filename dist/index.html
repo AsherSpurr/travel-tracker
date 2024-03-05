@@ -16,11 +16,11 @@
         <p class="error" id="error-login"></p>
         <div class="input-cont">
           <label for="userName">User</label><br>
-          <input type="text" id="userName" name="userName" required minlength="9"/>
+          <input type="text" id="userName" name="userName" placeholder="Username" required minlength="9"/>
         </div>
         <div class="input-cont">
           <label for="password">Password</label><br>
-          <input type="password" id="password" name="password" required minLength="6"/>
+          <input type="password" id="password" name="password" placeholder="Password" required minLength="6"/>
         </div>
         <button class="button-nav" id="button-login">Sign in</button>
       </form>
@@ -50,7 +50,7 @@
       <article class="article-main" id="article-main-bottom">
         <h3>My trips</h3>
         <div class="article-flex">
-          <section class="modal hidden" id="modal-past">
+          <section class="modal hidden" id="modal-past" tabindex="-1">
             <div class="flex">
               <button class="button-modal" id="modal-button-past">X</button>
             </div>
@@ -58,7 +58,7 @@
               <!-- <p class="filler">No Past Trips</p> -->
             </div>
           </section>
-          <div class="row-even">
+          <div class="row-even" tabindex="0">
             <figure id="fig-past-trips" aria-label="past-trips">
               <img class="image" id="img-past" src="./images/loc2.jpg"
                 alt="man walking a snowy path with mountains ahead" height="200px" width="200px" />
@@ -67,7 +67,7 @@
               </div>
             </figure>
           </div>
-          <section class="modal hidden" id="modal-current">
+          <section class="modal hidden" id="modal-current" tabindex="-1">
             <div class="flex">
               <button class="button-modal" id="modal-button-current">X</button>
             </div>
@@ -75,7 +75,7 @@
               <!-- <p class="filler">No Current Trips</p> -->
             </div>
           </section>
-          <div class="row-even">
+          <div class="row-even" tabindex="0">
             <figure id="fig-current-trips" aria-label="upcoming-trips">
               <img class="image" id="img-current" src="./images/loc3.jpg"
                 alt="woman standing in tree pose on top a mountain" height="100px" width="100px" />

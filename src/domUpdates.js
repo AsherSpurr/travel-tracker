@@ -92,6 +92,15 @@ document.querySelectorAll('.image').forEach(img => {
   })
 })
 
+// document.querySelectorAll('figure').forEach(fig => {
+//   fig.addEventListener('keydown', (e) => {
+//     console.log(e.key)
+//     if (e.code === 'Enter') {
+//       document.activeElement.click()
+//     }
+//   })
+// })
+
 buttonDyslexic.addEventListener('click', () => {
   bodySelect.classList.toggle('dyslexia-font')
   buttons.forEach((button) => {

@@ -45,7 +45,6 @@ function getUserLogin(userName, password) {
   // storeUserID(userId)
   console.log('inside user', userId)
 }
-
 userId = sessionStorage.getItem('user')
 console.log('global user', userId)
 
@@ -65,13 +64,11 @@ function sortPastTrips(trips) {
   })
 }
 
-
 function sortCurrentTrips(trips) {
   return currentTrips = trips.filter((trip) => {
     return trip.status === 'pending'
   })
 }
-
 
 function sortPastDests(pastTrips, dests) {
   let allDests = dests.destinations
@@ -119,10 +116,6 @@ function yearlyCost(trips, dests) {
   return totalCost
 }
 
-// function storeUserID(userID) {
-//   return userID
-// }
-
 function createTrip(dateValue, durationValue, travelersValue, destIDValue) {
   let durationNum = Number(durationValue)
   let travelerNum = Number(travelersValue)
@@ -130,7 +123,6 @@ function createTrip(dateValue, durationValue, travelersValue, destIDValue) {
   let userIdNum = Number(userId)
   let targetIndex = allTrips.trips.length + 1
   let formatDate = dateValue.replaceAll('-', '/')
-
 
   let trip = {
     id: targetIndex,
@@ -145,14 +137,13 @@ function createTrip(dateValue, durationValue, travelersValue, destIDValue) {
   postTrip(trip)
 }
 
-
 function estimateCost(duration, travelers, destID, destsData) {
   let dests = destsData.destinations
   let destNum = Number(destID)
   let targetDest = dests.find((dest) => {
     return destNum === dest.id
   })
-  let totalCost = 0
+  let totalCost = 0;
 
   if (targetDest) {
     let flightCost = targetDest.estimatedFlightCostPerPerson * travelers
