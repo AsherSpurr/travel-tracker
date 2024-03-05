@@ -101,6 +101,17 @@ document.querySelectorAll('.image').forEach(img => {
 //   })
 // })
 
+// document.querySelectorAll('figure').forEach(fig => {
+//   fig.addEventListener('keydown', (e) => {
+//     console.log('Key pressed:', e.key, ' | Code:', e.code);
+
+//     if (e.code === 'Enter') {
+//       // e.preventDefault(); // Prevent the default 'Enter' key behavior
+//       fig.click();
+//     }
+//   });
+// });
+
 buttonDyslexic.addEventListener('click', () => {
   bodySelect.classList.toggle('dyslexia-font')
   buttons.forEach((button) => {
