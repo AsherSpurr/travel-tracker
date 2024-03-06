@@ -30,9 +30,12 @@ JourneyLogix is made with JavaScript, HTML, and CSS. It's built using test-drive
 ### Original Project Spec Page
 - [Travel Tracker](https://frontend.turing.edu/projects/travel-tracker.html)
 
-### Screenshots: Initial CSS Styling
-![Screenshot 2024-02-12 at 5 44 21 PM](https://github.com/AsherSpurr/fitlit/assets/144856487/cefcfe08-ebfa-4fb5-a610-14ef913e60c0)
+### Screenshots: 
+![Recorded_screen_1_V2](https://github.com/AsherSpurr/travel-tracker/assets/144856487/8dff9110-ba86-4b2f-ba45-bba7adb6846b)
 
+![Screenshot 2024-03-05 at 8 57 01 PM](https://github.com/AsherSpurr/travel-tracker/assets/144856487/7e5c3ce2-d958-4692-b798-de70dd2f8630)
+
+<img width="848" alt="Screenshot 2024-03-05 at 8 55 05 PM" src="https://github.com/AsherSpurr/travel-tracker/assets/144856487/1f99020b-6ee8-42a9-851d-aed23bb0c072">
 
 ### Next steps 
 Additional enhancements could include:
@@ -40,6 +43,7 @@ Additional enhancements could include:
 - Adjust accessibility features to account for keyup & down events 
 - Incorporate more robust error handling for all cases
 - Re-factor starting functions based on best practice
+- Add more context for users and enhance UI experience on the form page.
 
 ### Accessibility
 To assess the app's accessibility, I used extensions such as WAVE, Lighthouse, and Colorblind to look for areas of improvement. I also ensured that the user could tab through the app without using a mouse and that a screen reader could effectively navigate through the site. Currently, The accessibility score is 100% according to Lighthouse. 
