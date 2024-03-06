@@ -5,7 +5,6 @@ import { getData } from "./apiCalls"
 const modalPast = document.querySelector('#modal-past')
 const modalCurrent = document.querySelector('#modal-current')
 const totalSpent = document.querySelector('.total-spent')
-const buttonSubmit = document.querySelector('.button-form')
 const inputs = document.querySelectorAll('input')
 const options = document.querySelector('.trip-select')
 const buttonPlan = document.querySelector('#button-plan')
@@ -16,17 +15,17 @@ const buttonHome = document.querySelector('#button-home')
 const overlay = document.querySelector('.overlay')
 const estimatedCost = document.querySelector('#estimated-cost')
 const buttonEstimate = document.querySelector('.estimate-cost')
-// const errorMain = document.querySelector('#error-main')
 const mainPage = document.querySelector('main')
 const header = document.querySelector('header')
 const loginPage = document.querySelector('.login-page')
-const buttonLogin = document.querySelector('#button-login')
 const buttonLogOut = document.querySelector('#button-logout')
 const errorLogin = document.querySelector('#error-login')
 const bodySelect = document.querySelector('body')
 const buttonDyslexic = document.querySelector('#button-dyslexia')
 const buttons = document.querySelectorAll('button')
 const feedbackMessage = document.querySelector('.success')
+const tripForm = document.querySelector('.trip-form')
+const loginForm = document.querySelector('.form-login')
 
 window.addEventListener('load', () => {
   if (sessionStorage.getItem('user')) {
@@ -38,7 +37,7 @@ window.addEventListener('load', () => {
 
 buttonLogOut.addEventListener('click', logout)
 
-buttonLogin.addEventListener('click', (e) => {
+loginForm.addEventListener('submit', (e) => {
   e.preventDefault()
   grabLogin()
 })
@@ -57,7 +56,7 @@ buttonPlan.addEventListener('click', () => {
 
 options.addEventListener('change', checkIfSelected)
 
-buttonSubmit.addEventListener('click', (e) => {
+tripForm.addEventListener('submit', (e) => {
   e.preventDefault()
   let date;
   let duration;
@@ -75,6 +74,8 @@ buttonSubmit.addEventListener('click', (e) => {
     }
     if (input.id === 'undefined') {
       console.log('no')
+    } else {
+      feedbackMessage.innerText = "Please fill out all parts of the form"
     }
   })
   createTrip(date, duration, travelers, destinationID)
@@ -237,6 +238,9 @@ function renderEstimate() {
 
 function renderSuccessMessage() {
   feedbackMessage.innerText = "Trip added successfully"
+  // document.querySelectorAll('input').forEach((input) => {
+  //   input.value = ""
+  // })
   setTimeout(removeSuccessMessage, 6000)
 }
 
@@ -275,14 +279,6 @@ function renderFetchError() {
   errorLogin.innerText = 'Sorry an unexpected issue has occured fetching the web information.'
 }
 
-// function renderMainError(err) {
-//   if (err) {
-//     errorMain.innerText = `Sorry an unexpected error has occured. ${err}`
-
-//   } else {
-//     errorMain.innerText = 'Sorry an unexpected error occured while creating your trip.'
-//   }
-// }
 
 export {
   renderTotalSpent,
@@ -290,7 +286,6 @@ export {
   renderCurrentTrips,
   renderTripSelect,
   renderEstimatedCost,
-  // renderMainError,
   login,
   loginError,
   renderSuccessMessage,

@@ -153,10 +153,7 @@ function estimateCost(duration, travelers, destID, destsData) {
   return totalCost
 }
 
-
 //  deleteTrip('208')
-
-
 
 export {
   userTrips,
