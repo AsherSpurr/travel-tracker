@@ -8,7 +8,7 @@ This web application was created as a simple one-stop shop to book and track tra
 
 ### Front End Installation
 - Visit the [FitLit repository](https://github.com/AsherSpurr/travel-tracker))
-- $ `git clone xxxxx`
+- $ `git clone git@github.com:AsherSpurr/travel-tracker.git`
 - $ `npm install`
 - $ `npm start`
 - Navigate to http://localhost:8080/ in your browser
