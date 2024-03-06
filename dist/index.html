@@ -10,10 +10,10 @@
 
 <body>
   <div class="overlay hidden"></div>
+  <p class="error" id="error-login"></p>
   <div class="login-page">
     <div class="login-cont">
       <form class="form-login">
-        <p class="error" id="error-login"></p>
         <div class="input-cont">
           <label for="userName">User</label><br>
           <input type="text" id="userName" name="userName" placeholder="Username" required minlength="9"/>
@@ -42,7 +42,6 @@
     <section class="section-main-top">
       <article class="article-main" id="article-main-top">
         <p class="error" id="error-main"></p>
-        <p class="success" id="success-main"></p>
         <h2>Total spent this year</h2><br>
         <p class="total-spent">---</p>
       </article>
@@ -117,6 +116,7 @@
         <select class="trip-select" name="destination" id="destination" required>
         </select><br>
         <button class="button-form">Finalize Trip</button>
+        <p class="success" id="success-main"></p>
       </form>
       <dl>
         <button class="estimate-cost">Estimate Cost</button>
