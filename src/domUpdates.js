@@ -36,12 +36,6 @@ window.addEventListener('load', () => {
   }
 })
 
-// window.addEventListener('load', () => {
-//   if (sessionStorage.getItem('confirmation')) {
-//     errorMain.innerText = 'Trip submitted successfully'
-//   }
-// })
-
 buttonLogOut.addEventListener('click', logout)
 
 buttonLogin.addEventListener('click', (e) => {
@@ -84,7 +78,6 @@ buttonSubmit.addEventListener('click', (e) => {
     }
   })
   createTrip(date, duration, travelers, destinationID)
-  // location.reload()
 })
 
 document.querySelectorAll('.button-modal').forEach((button) => {
@@ -97,15 +90,10 @@ document.querySelectorAll('.image').forEach(img => {
   img.addEventListener('click', () => {
     renderModal(img.id)
   })
-})
-
-document.querySelectorAll('figure').forEach(fig => {
-  fig.addEventListener('keypress', (e) => {
-    console.log(e.key)
-    if (e.code === 'Enter') {
-      // document.activeElement.click()
-      //  e.preventDefault(); 
-      // fig.click();
+  img.addEventListener('keypress', (e) => {
+    console.log('key:', e.key)
+    if (e.key === 'Enter' || e.key === ' ') {
+      renderModal(img.id)
     }
   })
 })
