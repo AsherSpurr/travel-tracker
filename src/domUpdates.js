@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { createTrip, estimateCost, allDests, getUserLogin} from "./scripts"
+import { createTrip, estimateCost, allDests, getUserLogin } from "./scripts"
 import { getData } from "./apiCalls"
 
 const modalPast = document.querySelector('#modal-past')
@@ -16,8 +16,7 @@ const buttonHome = document.querySelector('#button-home')
 const overlay = document.querySelector('.overlay')
 const estimatedCost = document.querySelector('#estimated-cost')
 const buttonEstimate = document.querySelector('.estimate-cost')
-// const errorPlan = document.querySelector('#error-plan')
-const errorMain = document.querySelector('#error-main')
+// const errorMain = document.querySelector('#error-main')
 const mainPage = document.querySelector('main')
 const header = document.querySelector('header')
 const loginPage = document.querySelector('.login-page')
@@ -27,7 +26,7 @@ const errorLogin = document.querySelector('#error-login')
 const bodySelect = document.querySelector('body')
 const buttonDyslexic = document.querySelector('#button-dyslexia')
 const buttons = document.querySelectorAll('button')
-const successMessage = document.querySelector('.success')
+const feedbackMessage = document.querySelector('.success')
 
 window.addEventListener('load', () => {
   if (sessionStorage.getItem('user')) {
@@ -91,15 +90,10 @@ document.querySelectorAll('.image').forEach(img => {
   img.addEventListener('click', () => {
     renderModal(img.id)
   })
-})
-
-document.querySelectorAll('figure').forEach(fig => {
-  fig.addEventListener('keypress', (e) => {
-    console.log(e.key)
-    if (e.code === 'Enter') {
-      // document.activeElement.click()
-      //  e.preventDefault(); 
-      // fig.click();
+  img.addEventListener('keypress', (e) => {
+    console.log('key:', e.key)
+    if (e.key === 'Enter' || e.key === ' ') {
+      renderModal(img.id)
     }
   })
 })
@@ -242,12 +236,12 @@ function renderEstimate() {
 }
 
 function renderSuccessMessage() {
-  successMessage.innerText = "Trip added to Upcoming trips"
+  feedbackMessage.innerText = "Trip added successfully"
   setTimeout(removeSuccessMessage, 6000)
 }
 
 function removeSuccessMessage() {
-  successMessage.innerText = ""
+  feedbackMessage.innerText = ""
 }
 
 function renderEstimatedCost(num) {
@@ -273,18 +267,22 @@ function unhideMainPage() {
   mainBottom.classList.remove('hidden')
 }
 
-// function renderPlanError(err) {
-//   errorPlan.innerText = `Sorry an unexpected error has occured. ${err}`
-// }
-
-function renderMainError(err) {
-  if (err) {
-    errorMain.innerText = `Sorry an unexpected error has occured. ${err}`
-
-  } else {
-    errorMain.innerText = 'Sorry an unexpected error occured while creating your trip.'
-  }
+function renderPlanError() {
+  feedbackMessage.innerText = `Sorry an unexpected error has occured.`
 }
+
+function renderFetchError() {
+  errorLogin.innerText = 'Sorry an unexpected issue has occured fetching the web information.'
+}
+
+// function renderMainError(err) {
+//   if (err) {
+//     errorMain.innerText = `Sorry an unexpected error has occured. ${err}`
+
+//   } else {
+//     errorMain.innerText = 'Sorry an unexpected error occured while creating your trip.'
+//   }
+// }
 
 export {
   renderTotalSpent,
@@ -292,8 +290,10 @@ export {
   renderCurrentTrips,
   renderTripSelect,
   renderEstimatedCost,
-  renderMainError,
+  // renderMainError,
   login,
   loginError,
-  renderSuccessMessage
+  renderSuccessMessage,
+  renderPlanError,
+  renderFetchError
 }

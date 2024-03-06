@@ -10,10 +10,10 @@
 
 <body>
   <div class="overlay hidden"></div>
+  <p class="error" id="error-login"></p>
   <div class="login-page">
     <div class="login-cont">
       <form class="form-login">
-        <p class="error" id="error-login"></p>
         <div class="input-cont">
           <label for="userName">User</label><br>
           <input type="text" id="userName" name="userName" placeholder="Username" required minlength="9"/>
@@ -42,7 +42,6 @@
     <section class="section-main-top">
       <article class="article-main" id="article-main-top">
         <p class="error" id="error-main"></p>
-        <p class="success" id="success-main"></p>
         <h2>Total spent this year</h2><br>
         <p class="total-spent">---</p>
       </article>
@@ -60,8 +59,8 @@
             </div>
           </section>
           <div class="row-even" >
-            <figure id="fig-past-trips" aria-label="past-trips" tabindex="0">
-              <img class="image" id="img-past" src="./images/loc2.jpg"
+            <figure id="fig-past-trips" aria-label="past-trips">
+              <img class="image" id="img-past" src="./images/loc2.jpg" tabindex="0"
                 alt="man walking a snowy path with mountains ahead" height="200px" width="200px" />
               <div class="overlay-fig">
                 <h2 class="overlay-text">Past trips</h2>
@@ -77,8 +76,8 @@
             </div>
           </section>
           <div class="row-even">
-            <figure id="fig-current-trips" aria-label="upcoming-trips"  tabindex="0">
-              <img class="image" id="img-current" src="./images/loc3.jpg"
+            <figure id="fig-current-trips" aria-label="upcoming-trips">
+              <img class="image" id="img-current" src="./images/loc3.jpg" tabindex="0"
                 alt="woman standing in tree pose on top a mountain" height="100px" width="100px" />
               <div class="overlay-fig">
                 <h2 class="overlay-text">Upcoming Trips</h2>
@@ -117,6 +116,7 @@
         <select class="trip-select" name="destination" id="destination" required>
         </select><br>
         <button class="button-form">Finalize Trip</button>
+        <p class="success" id="success-main"></p>
       </form>
       <dl>
         <button class="estimate-cost">Estimate Cost</button>

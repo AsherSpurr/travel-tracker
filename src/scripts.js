@@ -22,6 +22,7 @@ let allTrips;
 let allDests;
 let pastTrips;
 let currentTrips;
+
 /* <><><><><><><><><><><><><><><> Javascript <><><><><><><><><><><><><><> */
 function handleAllData(userData, tripsData, destData) {
   userTrips(userData, tripsData)
@@ -39,14 +40,10 @@ function getUserLogin(userName, password) {
   } else {
     sessionStorage.setItem('user', userID)
     getData(userID)
-    // login()
   }
   userId = sessionStorage.getItem('user')
-  // storeUserID(userId)
-  console.log('inside user', userId)
 }
 userId = sessionStorage.getItem('user')
-console.log('global user', userId)
 
 function userTrips(userData, tripsData) {
   let trips = tripsData.trips
@@ -121,18 +118,20 @@ function createTrip(dateValue, durationValue, travelersValue, destIDValue) {
   let travelerNum = Number(travelersValue)
   let destIDNum = Number(destIDValue)
   let userIdNum = Number(userId)
-  // let targetIndex = allTrips.trips.length + 1
+  let targetIndex = allTrips.trips.length + 1
   let formatDate = dateValue.replaceAll('-', '/')
 
   let trip = {
+    id: targetIndex,
     userID: userIdNum,
     destinationID: destIDNum,
     travelers: travelerNum,
     date: formatDate,
     duration: durationNum,
     status: 'pending',
-    suggestedActivities: ['none'],
+    suggestedActivities: [],
   }
+  console.log('trip', trip)
   postTrip(trip)
 }
 
@@ -155,10 +154,8 @@ function estimateCost(duration, travelers, destID, destsData) {
 }
 
 
-// deleteTrip(208)
+//  deleteTrip('208')
 
-
-// getData()
 
 
 export {
@@ -175,5 +172,5 @@ export {
   currentDests,
   getUserLogin,
   login,
-  userId
+  userId,
 }

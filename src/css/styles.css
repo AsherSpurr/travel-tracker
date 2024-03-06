@@ -3,12 +3,6 @@ body{
   background: white;
   overflow-y: scroll;
   margin: 0;
-  /* position: relative;
-  display: flex;
-  justify-content: center; */
-  /* align-items: center; */
-  /* display: flex;
-  justify-content: center; */
   min-width: 100%;
   min-height: 100vh;
   font-family: 'Enriqueta', serif;
@@ -168,10 +162,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   /* justify-content: space-around; */
-}
-
-#error-main {
-  font-size: xx-large;
 }
 
 #date,
@@ -375,4 +365,13 @@ figcaption {
 
 .hidden {
   display: none;
+}
+
+#error-main {
+  font-size: xx-large;
+}
+
+.error {
+  color: rgb(135, 0, 0);
+  font-size: larger;
 }
