@@ -54,7 +54,7 @@ function postTrip(trip) {
     }
   })
     .then((resp) => {
-      if (!resp.ok) {
+      if (!resp.ok || trip.travelers === null || trip.duration === null) {
         console.log('no')
         renderPlanError()
       } else {

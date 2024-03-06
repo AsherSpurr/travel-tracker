@@ -16,13 +16,13 @@
       <form class="form-login">
         <div class="input-cont">
           <label for="userName">User</label><br>
-          <input type="text" id="userName" name="userName" placeholder="Username" required minlength="9"/>
+          <input type="text" id="userName" name="userName" placeholder="Username" minlength="9" required/>
         </div>
         <div class="input-cont">
           <label for="password">Password</label><br>
-          <input type="password" id="password" name="password" placeholder="Password" required minLength="6"/>
+          <input type="password" id="password" name="password" placeholder="Password"  minLength="6" required/>
         </div>
-        <button class="button-nav" id="button-login">Sign in</button>
+        <button type="submit" class="button-nav" id="button-login">Sign in</button>
       </form>
     </div>
   </div>
@@ -115,7 +115,7 @@
         <label for="destination">Choose you're destination</label>
         <select class="trip-select" name="destination" id="destination" required>
         </select><br>
-        <button class="button-form">Finalize Trip</button>
+        <button type="submit" class="button-form">Finalize Trip</button>
         <p class="success" id="success-main"></p>
       </form>
       <dl>
