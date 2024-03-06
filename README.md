@@ -7,14 +7,14 @@ This web application was created as a simple one-stop shop to book and track tra
 ## Deploy Link
 
 ### Front End Installation
-- Visit the [FitLit repository](https://github.com/AsherSpurr/travel-tracker))
+- Visit the [FitLit repository](https://github.com/AsherSpurr/travel-tracker)
 - $ `git clone git@github.com:AsherSpurr/travel-tracker.git`
 - $ `npm install`
 - $ `npm start`
 - Navigate to http://localhost:8080/ in your browser
 
 ### Back End Installation
-- Visit the [FitLit repository](https://github.com/turingschool-examples/travel-tracker-api))
+- Visit the [FitLit repository](https://github.com/turingschool-examples/travel-tracker-api)
 - $ `git clone git@github.com:turingschool-examples/travel-tracker-api.git`
 - $ `npm install`
 - $ `npm start`
