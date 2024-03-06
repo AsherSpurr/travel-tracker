@@ -15,7 +15,7 @@ This web application was created as a simple one-stop shop to book and track tra
 
 ### Back End Installation
 - Visit the [FitLit repository](https://github.com/turingschool-examples/travel-tracker-api))
-- $ `git clone xxxxx`
+- $ `git clone git@github.com:turingschool-examples/travel-tracker-api.git`
 - $ `npm install`
 - $ `npm start`
 - Navigate to http://localhost:3001 in your browser
