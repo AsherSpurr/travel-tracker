@@ -61,6 +61,8 @@ function postTrip(trip) {
         console.log('yes')
         resp.json()
         renderSuccessMessage()
+        const modalContentCurrent = document.querySelector('#modal-content-current')
+        modalContentCurrent.innerHTML = ''
         getData(userId)
       }
     })
