@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JourneyLogix</title>
+</head>
+
+<body>
+  <div class="overlay hidden"></div>
+  <p class="error" id="error-login"></p>
+  <div class="login-page">
+    <div class="login-cont">
+      <form class="form-login">
+        <div class="input-cont">
+          <label for="userName">User</label><br>
+          <input type="text" id="userName" name="userName" placeholder="Username" minlength="9" required/>
+        </div>
+        <div class="input-cont">
+          <label for="password">Password</label><br>
+          <input type="password" id="password" name="password" placeholder="Password"  minLength="6" required/>
+        </div>
+        <button type="submit" class="button-nav" id="button-login">Sign in</button>
+      </form>
+    </div>
+  </div>
+  <header class="hidden">
+    <h1>JourneyLogix</h1>
+    <div class="margin-right">
+      <button class="button-nav" id="button-home">Home</button>
+      <button class="button-nav" id="button-plan">Plan</button>
+      <button class="button-nav" id="button-dyslexia">Dyslexia Lexend font</button>
+      <!-- <button class="button-nav" id="button-cost">Cost</button> -->
+    </div>
+    <div>
+      <button class="button-nav" id="button-logout">Sign out</button>
+    </div>
+  </header>
+  <main class="hidden">
+    <section class="section-main-top">
+      <article class="article-main" id="article-main-top">
+        <p class="error" id="error-main"></p>
+        <h2>Total spent this year</h2><br>
+        <p class="total-spent">---</p>
+      </article>
+    </section>
+    <section class="section-main-bottom">
+      <article class="article-main" id="article-main-bottom">
+        <h3>My trips</h3>
+        <div class="article-flex">
+          <section class="modal hidden" id="modal-past" tabindex="-1">
+            <div class="flex">
+              <button class="button-modal" id="modal-button-past">X</button>
+            </div>
+            <div class="modal-content" id="modal-content-past">
+              <!-- <p class="filler">No Past Trips</p> -->
+            </div>
+          </section>
+          <div class="row-even" >
+            <figure id="fig-past-trips" aria-label="past-trips">
+              <img class="image" id="img-past" src="./images/loc2.jpg" tabindex="0"
+                alt="man walking a snowy path with mountains ahead" height="200px" width="200px" />
+              <div class="overlay-fig">
+                <h2 class="overlay-text">Past trips</h2>
+              </div>
+            </figure>
+          </div>
+          <section class="modal hidden" id="modal-current" tabindex="-1">
+            <div class="flex">
+              <button class="button-modal" id="modal-button-current">X</button>
+            </div>
+            <div class="modal-content" id="modal-content-current">
+              <!-- <p class="filler">No Current Trips</p> -->
+            </div>
+          </section>
+          <div class="row-even">
+            <figure id="fig-current-trips" aria-label="upcoming-trips">
+              <img class="image" id="img-current" src="./images/loc3.jpg" tabindex="0"
+                alt="woman standing in tree pose on top a mountain" height="100px" width="100px" />
+              <div class="overlay-fig">
+                <h2 class="overlay-text">Upcoming Trips</h2>
+              </div>
+            </figure>
+          </div>
+          <section class="modal hidden" id="modal-future">
+            <div class="flex">
+              <button class="button-modal" id="modal-button-future">X</button>
+            </div>
+            <div class="modal-content" id="modal-content-future">
+              <p>No Current Trips</p>
+            </div>
+          </section>
+          <div class="row-even">
+            <figure id="fig-future-trips">
+              <img class="image" id="img-future" src="./images/loc1.jpg"
+                alt="small plane landing in water in front of a small tropical island" height="100px" width="100px" />
+              <div class="overlay-fig">
+                <h2 class="overlay-text">---</h2>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </article>
+    </section>
+    <section class="plan-trip-cont hidden">
+      <form class="trip-form">
+        <label for="date">Select the trips start date</label>
+        <input type="date" name="date" id="date" required /><br>
+        <label for="duration">Trip length</label>
+        <input type="number" name="duration" id="duration" required min="1"/><br>
+        <label for="travelers">Number of travelers</label>
+        <input type="number" name="travelers" id="travelers" required min="1"/><br>
+        <label for="destination">Choose you're destination</label>
+        <select class="trip-select" name="destination" id="destination" required>
+        </select><br>
+        <button type="submit" class="button-form">Finalize Trip</button>
+        <p class="success" id="success-main"></p>
+      </form>
+      <dl>
+        <button class="estimate-cost">Estimate Cost</button>
+        <dt aria-label="estimated cost"></dt>
+        <dd class="hidden" id="estimated-cost">---</dd>
+      </dl>
+      <p class="error" id="error-plan"></p>
+    </section>
+  </main>
+
+  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+  <script src="bundle.js"></script>
+
+</body>
+
+</html>
