@@ -340,6 +340,7 @@ figcaption {
   border-radius: 15px;
   background-color: rgb(108, 193, 208);
   color: white;
+  font-weight: 500;
   transform: rotateY(180deg);
 }
 

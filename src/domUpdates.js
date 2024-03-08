@@ -211,18 +211,32 @@ function renderPastTrips(trips, dests) {
 
 function renderCurrentTrips(trips, dests) {
   const modalContentCurrent = document.querySelector('#modal-content-current')
+  let counter = 0;
   trips.forEach((trip) => {
+    counter++
     let date = trip.date
     let dateRev = date.split('/').reverse().join('/')
     let targetDest = dests.find((dest) => {
       return dest.id === trip.destinationID
     })
+    let lodging = targetDest.estimatedLodgingCostPerDay * trip.duration
+    let flightCost = targetDest.estimatedFlightCostPerPerson * trip.travelers
     modalContentCurrent.innerHTML += `
-    <figure>
-      <p class="modal-date">${dateRev}</P>
-      <img class="modal-img" src="${targetDest.image}" alt="${targetDest.alt}" height="200px" width="200px"/>
-      <figcaption>${targetDest.destination}</figcaption>
-    </figure>`
+    <div class="card-cont" >
+      <div class="card-inner">
+        <div class="card-front">
+          <img class="modal-img" id="${counter}" src="${targetDest.image}" alt="${targetDest.alt}" height="250px" width="250px"/>
+          <figcaption>${targetDest.destination}</figcaption>
+        </div>
+        <div class="card-back">
+          <p class="modal-date">${dateRev}</P>
+          <p>Length of stay: ${trip.duration} days</p>
+          <p>Lodging costs: $${lodging}</p>
+          <p>Flight costs: $${flightCost}</p>
+        </div>
+      </div>
+    </div>
+ `
   })
 }
 
