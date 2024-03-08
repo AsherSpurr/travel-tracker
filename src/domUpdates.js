@@ -13,8 +13,12 @@ const mainTop = document.querySelector('.section-main-top')
 const mainBottom = document.querySelector('.section-main-bottom')
 const buttonHome = document.querySelector('#button-home')
 const overlay = document.querySelector('.overlay')
+
 const estimatedCost = document.querySelector('#estimated-cost')
 const buttonEstimate = document.querySelector('.estimate-cost')
+const flightCost = document.querySelector('#estimated-flight')
+const lodgingCost = document.querySelector('#estimated-lodging')
+
 const mainPage = document.querySelector('main')
 const header = document.querySelector('header')
 const loginPage = document.querySelector('.login-page')
@@ -263,8 +267,16 @@ function removeSuccessMessage() {
 }
 
 function renderEstimatedCost(num) {
-  estimatedCost.classList.remove('hidden')
-  estimatedCost.innerText = num
+  // estimatedCost.classList.remove('hidden')
+  estimatedCost.innerText = `$${num}`
+}
+
+function renderFlightCost(num) {
+  flightCost.innerText = `$${num}`
+}
+
+function renderLodgingCost(num) {
+  lodgingCost.innerText = `$${num}`
 }
 
 function hideForm() {
@@ -304,5 +316,7 @@ export {
   loginError,
   renderSuccessMessage,
   renderPlanError,
-  renderFetchError
+  renderFetchError,
+  renderFlightCost,
+  renderLodgingCost
 }

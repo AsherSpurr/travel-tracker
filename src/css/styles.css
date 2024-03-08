@@ -53,6 +53,7 @@ button {
   font-size: 1.2rem;
   background: #000;
   color: white;
+  margin-top: 10px;
 }
 
 .button-nav:hover {
@@ -163,7 +164,7 @@ button:hover {
 #duration,
 #travelers,
 select {
-  margin-right: 20em;
+  margin-right: 10em;
   min-height: 25px;
   min-width: 400px;
   border-radius: 5px;
@@ -175,8 +176,21 @@ label {
   font-size: 1.5rem;
 }
 dd {
-  margin-top: 20px;
-  font-size: xx-large;
+  /* margin-top: 20px; */
+  font-size: x-large;
+}
+
+dt {
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+dl {
+  border: 3px rgba(49, 28, 28, 0.5) dashed;
+  border-radius: 10px;
+  width: 120%;
+  height: 30%;
+  padding-left: 1em;
 }
 
 .section-main-top {
