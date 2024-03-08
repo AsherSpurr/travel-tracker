@@ -13,8 +13,12 @@ const mainTop = document.querySelector('.section-main-top')
 const mainBottom = document.querySelector('.section-main-bottom')
 const buttonHome = document.querySelector('#button-home')
 const overlay = document.querySelector('.overlay')
+
 const estimatedCost = document.querySelector('#estimated-cost')
 const buttonEstimate = document.querySelector('.estimate-cost')
+const flightCost = document.querySelector('#estimated-flight')
+const lodgingCost = document.querySelector('#estimated-lodging')
+
 const mainPage = document.querySelector('main')
 const header = document.querySelector('header')
 const loginPage = document.querySelector('.login-page')
@@ -26,6 +30,7 @@ const buttons = document.querySelectorAll('button')
 const feedbackMessage = document.querySelector('.success')
 const tripForm = document.querySelector('.trip-form')
 const loginForm = document.querySelector('.form-login')
+
 
 window.addEventListener('load', () => {
   if (sessionStorage.getItem('user')) {
@@ -126,7 +131,6 @@ function grabLogin() {
 }
 
 function login() {
-  // location.reload()
   mainPage.classList.remove('hidden')
   header.classList.remove('hidden')
   loginPage.classList.add('hidden')
@@ -176,35 +180,63 @@ function renderTotalSpent(total) {
 
 function renderPastTrips(trips, dests) {
   const modalContent = document.querySelector('#modal-content-past')
+  let counter = 0;
   trips.forEach((trip) => {
+    counter++
     let date = trip.date
     let dateRev = date.split('/').reverse().join('/')
     let targetDest = dests.find((dest) => {
       return dest.id === trip.destinationID
     })
+    let lodging = targetDest.estimatedLodgingCostPerDay * trip.duration
+    let flightCost = targetDest.estimatedFlightCostPerPerson * trip.travelers
     modalContent.innerHTML += `
-    <figure>
-      <p class="modal-date">${dateRev}</P>
-      <img class="modal-img" src="${targetDest.image}" alt="${targetDest.alt}" height="200px" width="200px"/>
-      <figcaption>${targetDest.destination}</figcaption>
-    </figure>`
+    <div class="card-cont" >
+      <div class="card-inner">
+        <div class="card-front">
+          <img class="modal-img" id="${counter}" src="${targetDest.image}" alt="${targetDest.alt}" height="250px" width="250px"/>
+          <figcaption>${targetDest.destination}</figcaption>
+        </div>
+        <div class="card-back">
+          <p class="modal-date">${dateRev}</P>
+          <p>Length of stay: ${trip.duration} days</p>
+          <p>Lodging costs: $${lodging}</p>
+          <p>Flight costs: $${flightCost}</p>
+        </div>
+      </div>
+    </div>
+ `
   })
 }
 
 function renderCurrentTrips(trips, dests) {
   const modalContentCurrent = document.querySelector('#modal-content-current')
+  let counter = 0;
   trips.forEach((trip) => {
+    counter++
     let date = trip.date
     let dateRev = date.split('/').reverse().join('/')
     let targetDest = dests.find((dest) => {
       return dest.id === trip.destinationID
     })
+    let lodging = targetDest.estimatedLodgingCostPerDay * trip.duration
+    let flightCost = targetDest.estimatedFlightCostPerPerson * trip.travelers
     modalContentCurrent.innerHTML += `
-    <figure>
-      <p class="modal-date">${dateRev}</P>
-      <img class="modal-img" src="${targetDest.image}" alt="${targetDest.alt}" height="200px" width="200px"/>
-      <figcaption>${targetDest.destination}</figcaption>
-    </figure>`
+    <div class="card-cont" >
+      <div class="card-inner">
+        <div class="card-front">
+          <img class="modal-img" id="${counter}" src="${targetDest.image}" alt="${targetDest.alt}" height="250px" width="250px"/>
+          <figcaption>${targetDest.destination}</figcaption>
+        </div>
+        <div class="card-back">
+          <p class="modal-date">${dateRev}</P>
+          <p>Length of stay: ${trip.duration} days</p>
+          <p>Lodging costs: $${lodging}</p>
+          <p>Flight costs: $${flightCost}</p>
+        </div>
+      </div>
+    </div>
+ `
   })
 }
 
@@ -249,8 +281,16 @@ function removeSuccessMessage() {
 }
 
 function renderEstimatedCost(num) {
-  estimatedCost.classList.remove('hidden')
-  estimatedCost.innerText = num
+  // estimatedCost.classList.remove('hidden')
+  estimatedCost.innerText = `$${num}`
+}
+
+function renderFlightCost(num) {
+  flightCost.innerText = `$${num}`
+}
+
+function renderLodgingCost(num) {
+  lodgingCost.innerText = `$${num}`
 }
 
 function hideForm() {
@@ -290,5 +330,7 @@ export {
   loginError,
   renderSuccessMessage,
   renderPlanError,
-  renderFetchError
+  renderFetchError,
+  renderFlightCost,
+  renderLodgingCost
 }

@@ -4,7 +4,7 @@
 import { getData, postTrip } from './apiCalls';
 
 // eslint-disable-next-line max-len
-import { renderTotalSpent, renderPastTrips, renderCurrentTrips, renderTripSelect, renderEstimatedCost, login, loginError } from './domUpdates';
+import { renderTotalSpent, renderPastTrips, renderCurrentTrips, renderTripSelect, renderEstimatedCost, login, loginError, renderFlightCost, renderLodgingCost } from './domUpdates';
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
 // import './css/index.scss'
@@ -142,13 +142,16 @@ function estimateCost(duration, travelers, destID, destsData) {
     return destNum === dest.id
   })
   let totalCost = 0;
-
+  let flightCost = 0;
+  let lodgingCost = 0;
   if (targetDest) {
-    let flightCost = targetDest.estimatedFlightCostPerPerson * travelers
-    let lodgingCost = targetDest.estimatedLodgingCostPerDay * duration
+    flightCost += targetDest.estimatedFlightCostPerPerson * travelers
+    lodgingCost += targetDest.estimatedLodgingCostPerDay * duration
     let agencyFee = (flightCost + lodgingCost) * .10
     totalCost += flightCost + lodgingCost + agencyFee
   }
+  renderFlightCost(flightCost)
+  renderLodgingCost(lodgingCost)
   renderEstimatedCost(totalCost)
   return totalCost
 }

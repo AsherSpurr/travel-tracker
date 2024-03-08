@@ -50,7 +50,7 @@
       <article class="article-main" id="article-main-bottom">
         <h3>My trips</h3>
         <div class="article-flex">
-          <section class="modal hidden" id="modal-past" tabindex="-1">
+          <section class="modal hidden" id="modal-past">
             <div class="flex">
               <button class="button-modal" id="modal-button-past">X</button>
             </div>
@@ -67,7 +67,7 @@
               </div>
             </figure>
           </div>
-          <section class="modal hidden" id="modal-current" tabindex="-1">
+          <section class="modal hidden" id="modal-current">
             <div class="flex">
               <button class="button-modal" id="modal-button-current">X</button>
             </div>
@@ -118,11 +118,18 @@
         <button type="submit" class="button-form">Finalize Trip</button>
         <p class="success" id="success-main"></p>
       </form>
-      <dl>
-        <button class="estimate-cost">Estimate Cost</button>
+      <div>
+        <dl>
+          <button class="estimate-cost">Estimate Cost</button>
         <dt aria-label="estimated cost"></dt>
-        <dd class="hidden" id="estimated-cost">---</dd>
-      </dl>
+          <dt id="flight-cost-label">Flight total:</dt>
+          <dd id="estimated-flight">----</dd>
+          <dt id="lodging-cost-label">Lodging total:</dt>
+          <dd id="estimated-lodging">----</dd>
+          <dt id="total-cost-label">Total with 10% agency fee:</dt>
+          <dd id="estimated-cost">---</dd>
+        </dl>
+      </div>
       <p class="error" id="error-plan"></p>
     </section>
   </main>
