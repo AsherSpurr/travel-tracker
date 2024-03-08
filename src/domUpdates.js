@@ -27,6 +27,7 @@ const feedbackMessage = document.querySelector('.success')
 const tripForm = document.querySelector('.trip-form')
 const loginForm = document.querySelector('.form-login')
 
+
 window.addEventListener('load', () => {
   if (sessionStorage.getItem('user')) {
     let user = sessionStorage.getItem('user')
@@ -126,7 +127,6 @@ function grabLogin() {
 }
 
 function login() {
-  // location.reload()
   mainPage.classList.remove('hidden')
   header.classList.remove('hidden')
   loginPage.classList.add('hidden')
@@ -176,18 +176,32 @@ function renderTotalSpent(total) {
 
 function renderPastTrips(trips, dests) {
   const modalContent = document.querySelector('#modal-content-past')
+  let counter = 0;
   trips.forEach((trip) => {
+    counter++
     let date = trip.date
     let dateRev = date.split('/').reverse().join('/')
     let targetDest = dests.find((dest) => {
       return dest.id === trip.destinationID
     })
+    let lodging = targetDest.estimatedLodgingCostPerDay * trip.duration
+    let flightCost = targetDest.estimatedFlightCostPerPerson * trip.travelers
     modalContent.innerHTML += `
-    <figure>
-      <p class="modal-date">${dateRev}</P>
-      <img class="modal-img" src="${targetDest.image}" alt="${targetDest.alt}" height="200px" width="200px"/>
-      <figcaption>${targetDest.destination}</figcaption>
-    </figure>`
+    <div class="card-cont" >
+      <div class="card-inner">
+        <div class="card-front">
+          <img class="modal-img" id="${counter}" src="${targetDest.image}" alt="${targetDest.alt}" height="250px" width="250px"/>
+          <figcaption>${targetDest.destination}</figcaption>
+        </div>
+        <div class="card-back">
+          <p class="modal-date">${dateRev}</P>
+          <p>Length of stay: ${trip.duration} days</p>
+          <p>Lodging costs: $${lodging}</p>
+          <p>Flight costs: $${flightCost}</p>
+        </div>
+      </div>
+    </div>
+ `
   })
 }
 

@@ -257,7 +257,7 @@ h4 {
 .modal-content {
   display: grid;
   grid-template-columns: repeat(3, 2fr);
-  justify-content: space-between;
+  justify-items: center;
 }
 
 .modal-img {
@@ -266,10 +266,11 @@ h4 {
 
 .modal-date {
   border-radius: 15px;
-  border: 1px black solid;
+  border: 1px white solid;
   max-width: fit-content;
   padding-left: 1em;
   padding-right: 1em;
+  margin-left: 1em;
 }
 
 figcaption {
@@ -282,7 +283,7 @@ figcaption {
   border-radius: 25px;
   border: none;
   font-size: x-large;
-  position: fixed;
+  position: absolute;
 }
 
 .button-modal:hover {
@@ -292,9 +293,7 @@ figcaption {
 .modal {
   width: 70%;
   height: 60%;
-  background-color: aliceblue;
   display: grid;
-  grid-template-columns: 200px, 200px, 200px;
   gap: 0.4rem;
   overflow-y: scroll;
   min-height: 250px;
@@ -319,9 +318,46 @@ figcaption {
   font-weight: 800;
 } 
 
-.hidden {
-  display: none;
+.card-back {
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 250px;
+  border-radius: 15px;
+  background-color: rgb(108, 193, 208);
+  color: white;
+  transform: rotateY(180deg);
 }
+
+.card-cont {
+  display: flex;
+  justify-content: center;
+  width: 250px;
+  height: 250px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: baseline;
+  text-indent: 1em;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card-cont:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
 
 .error {
   color: rgb(135, 0, 0);
@@ -332,4 +368,8 @@ figcaption {
   font-size: 2em;
   margin-left: 7em;
   margin-top: 4em;
+}
+
+.hidden {
+  display: none;
 }
