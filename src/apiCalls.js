@@ -31,7 +31,7 @@ function getData(userID) {
     .then(resp => resp.json())
     .catch(err => () => {
       console.log(err)
-      renderFetchError
+      renderFetchError()
     })
 
   Promise.all([user, trips, destinations])
@@ -54,14 +54,14 @@ function postTrip(trip) {
     }
   })
     .then((resp) => {
-      if (!resp.ok || trip.travelers === null || trip.duration === null) {
-        console.log('no')
+      if (!resp.ok) {
         renderPlanError()
       } else {
-        console.log('yes')
         resp.json()
         renderSuccessMessage()
         const modalContentCurrent = document.querySelector('#modal-content-current')
+        const modalContentPast = document.querySelector('#modal-content-past')
+        modalContentPast.innerHTML = ''
         modalContentCurrent.innerHTML = ''
         getData(userId)
       }
