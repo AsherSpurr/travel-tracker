@@ -24,9 +24,6 @@ http://AsherSpurr.github.io/travel-tracker
 - $ `npm start`
 - Navigate to http://localhost:8080/ in your browser
 
-### Contributors 
-[Asher Spurr](https://github.com/AsherSpurr)
-
 ### Technologies Used
 JourneyLogix is made with JavaScript, HTML, and CSS. It's built using test-driven development with the Mocha Testing Framework & Chai Assertion Library.
 - To run tests: `npm test` from the associated root directory
