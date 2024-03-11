@@ -2,7 +2,7 @@
 A site for users to quickly track their excursions and book new trips.
 
 ### Background 
-This web application was created as a simple one-stop shop to book and track travels. As a user I should be able to see previous trips as well as pending trips awaiting approval. I can book a new trip easily with the planning form.
+This web application was created as a simple one-stop shop to book and track travels. As a user, I should be able to see previous trips as well as pending trips awaiting approval. I can book a new trip easily with the planning form.
 
 ## Deploy Link
 http://AsherSpurr.github.io/travel-tracker
@@ -10,14 +10,14 @@ http://AsherSpurr.github.io/travel-tracker
 - **UserName:** traveler[1-50]
 - **Password:** travel
 
-### Required Back End Installation
+### Required Back-End Installation
 - Visit the [FitLit repository](https://github.com/turingschool-examples/travel-tracker-api)
 - $ `git clone git@github.com:turingschool-examples/travel-tracker-api.git`
 - $ `npm install`
 - $ `npm start`
 - Navigate to http://localhost:3001 in your browser
 
-### Front End Installation
+### Optional Front-End Installation
 - Visit the [FitLit repository](https://github.com/AsherSpurr/travel-tracker)
 - $ `git clone git@github.com:AsherSpurr/travel-tracker.git`
 - $ `npm install`
@@ -47,13 +47,4 @@ To assess the app's accessibility, I used extensions such as WAVE, Lighthouse, a
 
 ### Screenshots: 
 
-
 https://github.com/AsherSpurr/travel-tracker/assets/144856487/97e0f084-5f71-4cab-9e6a-e22a6fbec54b
-
-
-
-![Screenshot 2024-03-05 at 8 57 01 PM](https://github.com/AsherSpurr/travel-tracker/assets/144856487/7e5c3ce2-d958-4692-b798-de70dd2f8630)
-
-<img width="848" alt="Screenshot 2024-03-05 at 8 55 05 PM" src="https://github.com/AsherSpurr/travel-tracker/assets/144856487/1f99020b-6ee8-42a9-851d-aed23bb0c072">
-
-
