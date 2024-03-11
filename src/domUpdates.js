@@ -4,7 +4,9 @@ import { getData } from "./apiCalls"
 
 const modalPast = document.querySelector('#modal-past')
 const modalCurrent = document.querySelector('#modal-current')
+
 const totalSpent = document.querySelector('.total-spent')
+
 const inputs = document.querySelectorAll('input')
 const options = document.querySelector('.trip-select')
 const buttonPlan = document.querySelector('#button-plan')
@@ -270,9 +272,6 @@ function renderEstimate() {
 
 function renderSuccessMessage() {
   feedbackMessage.innerText = "Trip added successfully"
-  // document.querySelectorAll('input').forEach((input) => {
-  //   input.value = ""
-  // })
   setTimeout(removeSuccessMessage, 6000)
 }
 
@@ -281,7 +280,6 @@ function removeSuccessMessage() {
 }
 
 function renderEstimatedCost(num) {
-  // estimatedCost.classList.remove('hidden')
   estimatedCost.innerText = `$${num}`
 }
 
