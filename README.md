@@ -7,6 +7,9 @@ This web application was created as a simple one-stop shop to book and track tra
 ## Deploy Link
 http://AsherSpurr.github.io/travel-tracker
 
+- **UserName:** traveler[1-50]
+- **Password:** travel
+
 ### Required Back End Installation
 - Visit the [FitLit repository](https://github.com/turingschool-examples/travel-tracker-api)
 - $ `git clone git@github.com:turingschool-examples/travel-tracker-api.git`
