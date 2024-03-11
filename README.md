@@ -46,7 +46,11 @@ To assess the app's accessibility, I used extensions such as WAVE, Lighthouse, a
 - [Travel Tracker](https://frontend.turing.edu/projects/travel-tracker.html)
 
 ### Screenshots: 
-![Recorded_screen_1_V2](https://github.com/AsherSpurr/travel-tracker/assets/144856487/8dff9110-ba86-4b2f-ba45-bba7adb6846b)
+
+
+https://github.com/AsherSpurr/travel-tracker/assets/144856487/97e0f084-5f71-4cab-9e6a-e22a6fbec54b
+
+
 
 ![Screenshot 2024-03-05 at 8 57 01 PM](https://github.com/AsherSpurr/travel-tracker/assets/144856487/7e5c3ce2-d958-4692-b798-de70dd2f8630)
 
