@@ -236,7 +236,7 @@ function getData(userID) {
     .then(resp => resp.json())
     .catch(err => () => {
       console.log(err)
-      _domUpdates__WEBPACK_IMPORTED_MODULE_1__.renderFetchError
+      ;(0,_domUpdates__WEBPACK_IMPORTED_MODULE_1__.renderFetchError)()
     })
 
   Promise.all([user, trips, destinations])
@@ -259,14 +259,14 @@ function postTrip(trip) {
     }
   })
     .then((resp) => {
-      if (!resp.ok || trip.travelers === null || trip.duration === null) {
-        console.log('no')
-        ;(0,_domUpdates__WEBPACK_IMPORTED_MODULE_1__.renderPlanError)()
+      if (!resp.ok) {
+        (0,_domUpdates__WEBPACK_IMPORTED_MODULE_1__.renderPlanError)()
       } else {
-        console.log('yes')
         resp.json()
         ;(0,_domUpdates__WEBPACK_IMPORTED_MODULE_1__.renderSuccessMessage)()
         const modalContentCurrent = document.querySelector('#modal-content-current')
+        const modalContentPast = document.querySelector('#modal-content-past')
+        modalContentPast.innerHTML = ''
         modalContentCurrent.innerHTML = ''
         getData(_scripts__WEBPACK_IMPORTED_MODULE_0__.userId)
       }
@@ -316,7 +316,9 @@ __webpack_require__.r(__webpack_exports__);
 
 const modalPast = document.querySelector('#modal-past')
 const modalCurrent = document.querySelector('#modal-current')
+
 const totalSpent = document.querySelector('.total-spent')
+
 const inputs = document.querySelectorAll('input')
 const options = document.querySelector('.trip-select')
 const buttonPlan = document.querySelector('#button-plan')
@@ -582,9 +584,6 @@ function renderEstimate() {
 
 function renderSuccessMessage() {
   feedbackMessage.innerText = "Trip added successfully"
-  // document.querySelectorAll('input').forEach((input) => {
-  //   input.value = ""
-  // })
   setTimeout(removeSuccessMessage, 6000)
 }
 
@@ -593,7 +592,6 @@ function removeSuccessMessage() {
 }
 
 function renderEstimatedCost(num) {
-  // estimatedCost.classList.remove('hidden')
   estimatedCost.innerText = `$${num}`
 }
 
