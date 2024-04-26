@@ -4,7 +4,7 @@ A site for users to quickly track their excursions and book new trips.
 ### Background 
 This web application was created as a simple one-stop shop to book and track travels. As a user, I should be able to see previous trips as well as pending trips awaiting approval. I can book a new trip easily with the planning form.
 
-## Deploy Link
+## Deploy Link (WIP, please run on local server for now)
 http://AsherSpurr.github.io/travel-tracker
 
 - **UserName:** traveler[1-50]
